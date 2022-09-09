@@ -42,14 +42,16 @@ body{
 }
 
 .Host_Pic{
+    position:relative;
     align-self:center;
     border-radius:50%;
+   
 }
 
 .on_screen_button{
-    
+    inset:0;
     margin: 0;
-    margin-left: 2em;
+    
     padding: 0;
     list-style:none;
     
@@ -58,10 +60,9 @@ body{
     justify-content: space-around;
     align-items:center;
     position:absolute;
-    top: 50%;
-    left: 35%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
+    
+    
+    
     
 }
 
