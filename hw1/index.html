@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <title>Web Programming HW1 B07901104</title>
+</head>
+<body>
+    <div class = "Root">
+    <div class="People">
+    <div class="Host">
+        <div class="mic_off">
+            <span class="material-icons md-light">mic_off</span>
+        </div>
+        <div class = "Host_Pic">
+            <img src = "https://spy-family.net/assets/img/special/anya/01.png", width = "250px", alt = "Host Icon">
+        </div>
+        <div class = "on_screen_button">
+            <button id = "mis">
+                <span class="material-icons md-light">push_pin</span>
+                <span class="material-icons md-light">grid_off</span>
+                <span class="material-icons md-light">close_fullscreen</span>
+            </button>
+
+        </div>
+        <div class="situation">
+            <span class="material-icons md-light">push_pin</span>
+            <span class="You">你</span>
+        </div>
+    </div>
+    
+    <div class = "Guest">
+        <div class = "Guest1"> 
+            <div class = "mute1">
+                <span class="material-icons md-light">mic_off</span>  
+            </div>
+            <div class = "Guest1_Pic">
+            <img src = "https://spy-family.net/assets/img/special/yor/03.png", width = "40%", alt = "約兒佛傑" >
+            </div>
+            <div class="name1">馬麻</div>
+        </div>
+
+        <div class = "Guest2"> 
+            <div class = "mute2">
+                <span class="material-icons md-light">mic_off</span>  
+            </div>
+            <div class = "Guest2_Pic">
+            <img src = "https://spy-family.net/assets/img/special/loid/04.png", width = "40%", alt = "羅伊德佛傑" >
+            </div>
+            <div class="name2">把拔</div>
+        </div>
+
+        <div class = "Guest3"> 
+            <div class = "mute3">
+                <span class="material-icons md-light">mic_off</span>  
+            </div>
+            <div class = "Guest4_Pic">
+            <img src = "https://spy-family.net/assets/img/special/summermission01/01.png", width = "40%", alt = "宿舍長" >
+            </div>
+            <div class="name3">老頭</div>
+        </div>
+        <div class = "Guest4"> 
+            <div class = "mute4">
+                <span class="material-icons md-light">mic_off</span>  
+            </div>
+            <div class = "Guest4_Pic">
+            <img src = "https://spy-family.net/assets/img/special/summermission02/01.png", width = "40%", alt = "達米安" >
+            </div>
+            <div class="name4">次子</div>
+        </div>
+        <div class = "Guest5"> 
+            <div class = "mute5">
+                <span class="material-icons md-light">mic_off</span>  
+            </div>
+            <div class = "Guest5_Pic">
+            <img src = "https://spy-family.net/assets/img/special/episode6/06.png", width = "40%", alt = "貝琪" >
+            </div>
+            <div class="name5">貝琪</div>
+        </div>
+    </div>
+    </div>
+
+    <footer class = "Google_meet_footer" id = "meet footer">
+        <div class = "time_and_name ">
+            <span id="time">20:07 | Spy Family</span>
+        </div>
+        <ul class = "control_buttons">
+            <li><input id = "microphone" class="inputController" title= "mute/unmute" type="checkbox"/> 
+                
+                <label class="button mic_on_off" for="microphone" title= "Microphone" >
+                    <span class="material-icons md-light">mic</span>
+                </label>
+                
+            </li>
+            <li><input id = "video" class="inputController"  type="checkbox"/> 
+                <label class="button video" for="video" title= "Camera">
+                    <span class="material-icons-outlined md-light">videocam</span>
+                </label>
+            </li>
+            <li><input id = "raise" class="inputController"  type="checkbox"/> 
+                <label class="button raise" for="raise" title= "Rasie hand">
+                    <span class="material-icons-outlined md-light">back_hand</span>
+                </label>
+            </li>
+            <li><input id = "share" class="inputController"  type="checkbox"/> 
+                <label class="button share" for="share" title= "Present now">
+                    <span class="material-icons-outlined md-light">present_to_all</span>
+                </label>
+            </li>
+            
+            <li><button id = "list" title= "More options" ><span class="material-icons md-light">more_vert</span></button></li>
+            <li><button id = "endall" title= "Leave call"><span class="material-icons md-light">call_end</span></button></li>
+        </ul>
+        <ul class = "other_buttons">
+            <li><button id = "info" title= "Meeting details"><span class="material-icons md-light">info_outline</span></button></li>
+            <li><button id = "people" title= "Show everyone"><span class="material-icons-outlined md-light">people</span></button></li>
+            <li><button id = "message" title= "Chat with everyone"><span class="material-icons-outlined md-light">message</span></button></li>
+            <li><button id = "category" title= "Activities"><span class="material-icons-outlined md-light">category</span></button></li>
+            <li><button id = "lock_person" title= "Host control"><span class="material-icons-outlined md-light">lock_person</span></button></li>  
+        </ul>
+        
+    </footer>
+    </div>
+</body>
+</html>
