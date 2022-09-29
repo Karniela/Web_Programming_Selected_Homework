@@ -13,12 +13,13 @@
     
     <div class = "Root">
     <div class="People">
-    <div class="Host">
+    <div class="Spotlight">
+    <div class="Host" id = "host_section">
         <div class="mic_off">
             <span class="material-icons md-light">mic_off</span>
         </div>
-        <div class = "Host_Pic">
-            <img src = "https://spy-family.net/assets/img/special/anya/01.png", width = "250px", alt = "Host Icon">
+        <div class = "Spotlight_Pic_and_mis" >
+            <img class = "Spotlight_Pic" id = "host_pic" src = "https://spy-family.net/assets/img/special/anya/01.png", width = "30%", alt = "Host Icon">
             <div class = "on_screen_button">
                 <button id = "mis">
                     <span class="material-icons md-light">push_pin</span>
@@ -30,8 +31,9 @@
         
         <div class="situation">
             <span class="material-icons md-light">push_pin</span>
-            <span class="You">你</span>
+            <span class="Spotlight_id" id = "you">你</span>
         </div>
+    </div>
     </div>
     
     <div class = "Collaborators">
@@ -46,8 +48,8 @@
             </div>
 
             <div class = "Guest_Pic">
-            <img src = "https://spy-family.net/assets/img/special/yor/03.png", width = "40%", alt = "約兒佛傑" >
-            <button class = "Guest_mis">
+            <img class= "pics" src = "https://spy-family.net/assets/img/special/yor/03.png", width = "40%", alt = "約兒佛傑" >
+            <button class = "Guest_mis" onclick = "ChangeSpotlight(this);">
                 <span class="material-icons md-light md-18">push_pin</span>
                 <span class="material-icons md-light md-18">grid_off</span>
                 <span class="material-icons md-light md-18">close_fullscreen</span>
@@ -66,8 +68,8 @@
                 </div>
             </div>
             <div class = "Guest_Pic">
-            <img src = "https://spy-family.net/assets/img/special/loid/04.png", width = "40%", alt = "羅伊德佛傑" >
-            <button class = "Guest_mis">
+            <img class= "pics" src = "https://spy-family.net/assets/img/special/loid/04.png", width = "40%", alt = "羅伊德佛傑" >
+            <button class = "Guest_mis" onclick = "ChangeSpotlight(this);">
                 <span class="material-icons md-light md-18">push_pin</span>
                 <span class="material-icons md-light md-18">grid_off</span>
                 <span class="material-icons md-light md-18">close_fullscreen</span>
@@ -87,8 +89,8 @@
             </div>
 
             <div class = "Guest_Pic">
-            <img src = "https://spy-family.net/assets/img/special/summermission01/01.png", width = "40%", alt = "宿舍長" >
-            <button class = "Guest_mis">
+            <img class= "pics" src = "https://spy-family.net/assets/img/special/summermission01/01.png", width = "40%", alt = "宿舍長" >
+            <button class = "Guest_mis" onclick = "ChangeSpotlight(this);">
                 <span class="material-icons md-light md-18">push_pin</span>
                 <span class="material-icons md-light md-18">grid_off</span>
                 <span class="material-icons md-light md-18">close_fullscreen</span>
@@ -107,8 +109,8 @@
                 </div>
             </div>
             <div class = "Guest_Pic">
-            <img src = "https://spy-family.net/assets/img/special/summermission02/01.png", width = "40%", alt = "達米安" >
-            <button class = "Guest_mis">
+            <img class= "pics" src = "https://spy-family.net/assets/img/special/summermission02/01.png", width = "40%", alt = "達米安" >
+            <button class = "Guest_mis" onclick = "ChangeSpotlight(this);">
                 <span class="material-icons md-light md-18">push_pin</span>
                 <span class="material-icons md-light md-18">grid_off</span>
                 <span class="material-icons md-light md-18">close_fullscreen</span>
@@ -128,8 +130,8 @@
             </div>
 
             <div class = "Guest_Pic">
-            <img src = "https://spy-family.net/assets/img/special/episode6/06.png", width = "40%", alt = "貝琪" >
-            <button class = "Guest_mis">
+            <img class= "pics" src = "https://spy-family.net/assets/img/special/episode6/06.png", width = "40%", alt = "貝琪" >
+            <button class = "Guest_mis" onclick = "ChangeSpotlight(this);">
                 <span class="material-icons md-light md-18">push_pin</span>
                 <span class="material-icons md-light md-18">grid_off</span>
                 <span class="material-icons md-light md-18">close_fullscreen</span>

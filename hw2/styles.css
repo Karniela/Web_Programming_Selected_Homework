@@ -31,25 +31,30 @@ body{
     flex-direction: row;
 }
 /*Host Section*/
+.Spotlight{
+    width: 73%;
+}
 .Host{
-    
     background: rgb(32,33,36);
     display: flex;
-    width: 73%;
     height: 700px;
     flex-direction: column;
     justify-content: space-between;
     align-items: left;
 }
 
-.Host_Pic{
+.Spotlight_Pic_and_mis{
     position:relative;
+    transform: translate(30%, 0%);
+    display:flex;
+    flex-direction: row;
     align-self:center;
     border-radius:50%;
-   
 }
 
+
 .on_screen_button{
+    transform:translate(-35%, 0%);
     inset:0;
     margin: 0;
     padding: 0;
@@ -59,8 +64,8 @@ body{
     justify-content: space-around;
     align-items:center;
     position:absolute;   
+    align-self:center;
 }
-
 
 
 #mis{
@@ -101,7 +106,7 @@ body{
     align-self: flex-start;
 }
 
-.You{
+.Spotlight_id{
     text-align: left;
     align-self: flex-end;
     padding: 2px;
