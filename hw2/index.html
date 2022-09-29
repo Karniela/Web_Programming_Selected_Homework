@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <script src="main.js"></script>
+    
     <div class = "Root">
     <div class="People">
     <div class="Host">
@@ -25,7 +25,6 @@
                     <span class="material-icons md-light">grid_off</span>
                     <span class="material-icons md-light">close_fullscreen</span>
                 </button>
-    
             </div>
         </div>
         
@@ -37,79 +36,104 @@
     
     <div class = "Collaborators">
         <div class = "Guest" id="Guest1"> 
-            <div class = "Guest_Button">
-            <div class = "closetab">
+            <div class = "Guest_Button" >
+            <button class = "closetab" onclick = "RemoveGuest(this);">
                 <span class="material-icons">highlight_off</span>    
-            </div>
+            </button>
             <div class = "mute">
-                <span class="material-icons md-light">mic_off</span>  
+                <span class="material-icons md-light md-18">mic_off</span>  
             </div>
             </div>
 
             <div class = "Guest_Pic">
             <img src = "https://spy-family.net/assets/img/special/yor/03.png", width = "40%", alt = "約兒佛傑" >
+            <button class = "Guest_mis">
+                <span class="material-icons md-light md-18">push_pin</span>
+                <span class="material-icons md-light md-18">grid_off</span>
+                <span class="material-icons md-light md-18">close_fullscreen</span>
+            </button>
             </div>
             <div class="name">馬麻</div>
         </div>
 
         <div class = "Guest" id="Guest2"> 
             <div class = "Guest_Button">
-                <div class = "closetab">
+                <button class = "closetab" onclick = "RemoveGuest(this);">
                     <span class="material-icons">highlight_off</span>    
-                </div>
+                </button>
                 <div class = "mute">
-                    <span class="material-icons md-light">mic_off</span>  
+                    <span class="material-icons md-light md-18">mic_off</span>  
                 </div>
             </div>
             <div class = "Guest_Pic">
             <img src = "https://spy-family.net/assets/img/special/loid/04.png", width = "40%", alt = "羅伊德佛傑" >
+            <button class = "Guest_mis">
+                <span class="material-icons md-light md-18">push_pin</span>
+                <span class="material-icons md-light md-18">grid_off</span>
+                <span class="material-icons md-light md-18">close_fullscreen</span>
+            </button>
             </div>
             <div class="name">把拔</div>
         </div>
 
         <div class = "Guest" id="Guest3"> 
             <div class = "Guest_Button">
-                <div class = "closetab">
+                <button class = "closetab" onclick = "RemoveGuest(this);">
                     <span class="material-icons">highlight_off</span>    
-                </div>
+                </button>
                 <div class = "mute">
-                    <span class="material-icons md-light">mic_off</span>  
+                    <span class="material-icons md-light md-18">mic_off</span>  
                 </div>
             </div>
 
             <div class = "Guest_Pic">
             <img src = "https://spy-family.net/assets/img/special/summermission01/01.png", width = "40%", alt = "宿舍長" >
+            <button class = "Guest_mis">
+                <span class="material-icons md-light md-18">push_pin</span>
+                <span class="material-icons md-light md-18">grid_off</span>
+                <span class="material-icons md-light md-18">close_fullscreen</span>
+            </button>
             </div>
             <div class="name">老頭</div>
         </div>
 
         <div class = "Guest" id="Guest4"> 
             <div class = "Guest_Button">
-                <div class = "closetab">
+                <button class = "closetab" onclick = "RemoveGuest(this);">
                     <span class="material-icons">highlight_off</span>    
-                </div>
+                </button>
                 <div class = "mute">
-                    <span class="material-icons md-light">mic_off</span>  
+                    <span class="material-icons md-light md-18">mic_off</span>  
                 </div>
             </div>
             <div class = "Guest_Pic">
             <img src = "https://spy-family.net/assets/img/special/summermission02/01.png", width = "40%", alt = "達米安" >
+            <button class = "Guest_mis">
+                <span class="material-icons md-light md-18">push_pin</span>
+                <span class="material-icons md-light md-18">grid_off</span>
+                <span class="material-icons md-light md-18">close_fullscreen</span>
+            </button>
             </div>
             <div class="name">次子</div>
         </div>
 
         <div class = "Guest" id="Guest5"> 
             <div class = "Guest_Button">
-                <div class = "closetab">
+                <button class = "closetab" onclick = "RemoveGuest(this);" >
                     <span class="material-icons">highlight_off</span>    
-                </div>
+                </button>
                 <div class = "mute">
-                    <span class="material-icons md-light">mic_off</span>  
+                    <span class="material-icons md-light md-18">mic_off</span>  
                 </div>
             </div>
 
             <div class = "Guest_Pic">
             <img src = "https://spy-family.net/assets/img/special/episode6/06.png", width = "40%", alt = "貝琪" >
+            <button class = "Guest_mis">
+                <span class="material-icons md-light md-18">push_pin</span>
+                <span class="material-icons md-light md-18">grid_off</span>
+                <span class="material-icons md-light md-18">close_fullscreen</span>
+            </button>
             </div>
             <div class="name">貝琪</div>
         </div>
@@ -157,6 +181,6 @@
         
     </footer>
     </div>
-
+    <script src="main.js"></script>
 </body>
 </html>
