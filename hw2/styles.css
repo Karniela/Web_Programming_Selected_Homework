@@ -119,7 +119,7 @@ body{
 }
 
 /*Guest Section*/
-.Guest{
+.Collaborators{
     width:27%;
     height:80%;
     position: relative;
@@ -130,7 +130,7 @@ body{
     align-items: left;
     flex-wrap:wrap;
 }
-.Guest1{
+.Guest{
     width:47%;
     height:180px;
     background: rgb(61,64,67);
@@ -141,179 +141,35 @@ body{
     border-radius:5px
     
 }
-
-.mute1{
-    border: none;
-    padding: 6px;
-    font-size:0.8em;
-    margin: 3px;
-    background: rgb(52,55,58);
-    
-    align-self: flex-end;
-    border-radius: 50%;
-}
-.name1{
-    padding:1em;
-    align-self: flex-start;
-    color: white;
-}   
-
-.Guest1_Pic{
+.Guest_Button{
     position:relative;
-    transform: translate(30%, 0%);
-    align-self:center;
-    border-radius:50%;
-}
-
-.Guest2{
-    
-    width:47%;
-    height:180px;
-    background: rgb(61,64,67);
     display:flex;
-    flex-direction: column;  
+    flex-direction: row;
     justify-content: space-between; 
     align-items: left;
-    
-    
-    border-radius:5px
-    
-}
+    padding:5px;
 
-.mute2{
+}
+.mute{
+    position:relative;
     border: none;
     padding: 6px;
-    font-size:0.8em;
-    margin: 3px;
     background: rgb(52,55,58);
-    
-    align-self: flex-end;
     border-radius: 50%;
 }
-.name2{
+.name{
     padding:1em;
     align-self: flex-start;
     color: white;
 }   
 
-.Guest2_Pic{
+.Guest_Pic{
     position:relative;
     transform: translate(30%, 0%);
     align-self:center;
     border-radius:50%;
 }
 
-.Guest3{
-    
-    width:47%;
-    height: 180px;
-    background: rgb(61,64,67);
-    display:flex;
-    flex-direction: column;  
-    justify-content: space-between; 
-    align-items: left;
-    position:relative;
-    
-    border-radius:5px
-    
-}
-
-.mute3{
-    border: none;
-    padding: 6px;
-    font-size:0.8em;
-    margin: 3px;
-    background: rgb(52,55,58);
-    
-    align-self: flex-end;
-    border-radius: 50%;
-}
-.name3{
-    padding:1em;
-    align-self: flex-start;
-    color: white;
-}   
-
-.Guest3_Pic{
-    position:relative;
-    transform: translate(30%, 0%);
-    align-self:center;
-    border-radius:50%;
-}
-
-.Guest4{
-    
-    width:47%;
-    height: 180px;
-    background: rgb(61,64,67);
-    display:flex;
-    flex-direction: column;  
-    justify-content: space-between; 
-    align-items: left;
-    position:relative;
-    border-radius:5px
-    
-}
-
-.mute4{
-    border: none;
-    padding: 6px;
-    font-size:0.8em;
-    margin: 3px;
-    background: rgb(52,55,58);
-    
-    align-self: flex-end;
-    border-radius: 50%;
-}
-.name4{
-    padding:1em;
-    align-self: flex-start;
-    color: white;
-}   
-
-.Guest4_Pic{
-    position:relative;
-    transform: translate(30%, 0%);
-    align-self:center;
-    border-radius:50%;
-}
-.Guest5{
-    
-    width:60%;
-    height: 180px;
-    background: rgb(61,64,67);
-    display:flex;
-    flex-direction: column;  
-    justify-content: space-between; 
-    align-items: left;
-    position:relative;
-    
-    border-radius:5px
-    
-}
-
-.mute5{
-    border: none;
-    padding: 6px;
-    font-size:0.8em;
-    margin: 3px;
-    background: rgb(52,55,58);
-    
-    align-self: flex-end;
-    border-radius: 50%;
-}
-.name5{
-    padding:1em;
-    align-self: flex-start;
-    color: white;
-}   
-
-.Guest5_Pic{
-    position:relative;
-    transform: translate(30%, 0%);
-    align-self:center;
-    border-radius:50%;
-}
 /*Bunch of Buttons*/
 .Google_meet_footer{
     width: 100%;
