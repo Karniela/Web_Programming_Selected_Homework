@@ -118,7 +118,7 @@ body{
 /*Guest Section*/
 .Collaborators{
     width:27%;
-    height:80%;
+    height:95%;
     position: relative;
     top: 50px;
     display:flex;
@@ -176,7 +176,7 @@ body{
     position:relative;
     align-items: left;
     padding-left:1em;
-    padding-bottom: 1em;
+    padding-bottom: 15%;
     align-self: flex-start;
     color:white; 
 }   
