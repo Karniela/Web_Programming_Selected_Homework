@@ -13,7 +13,7 @@
     
     <div class = "Root">
     <div class="People">
-    <div class="Spotlight">
+    <div class="Spotlight" id="Spotlight">
     <div class="Host" id = "host_section">
         <div class="mic_off">
             <span class="material-icons md-light">mic_off</span>
@@ -21,7 +21,7 @@
         <div class = "Spotlight_Pic_and_mis" >
             <img class = "Spotlight_Pic" id = "host_pic" src = "https://spy-family.net/assets/img/special/anya/01.png", width = "30%", alt = "Host Icon">
             <div class = "on_screen_button">
-                <button id = "mis">
+                <button id = "mis" onclick = "RemoveSpotlight(this);">
                     <span class="material-icons md-light">push_pin</span>
                     <span class="material-icons md-light">grid_off</span>
                     <span class="material-icons md-light">close_fullscreen</span>
@@ -36,7 +36,7 @@
     </div>
     </div>
     
-    <div class = "Collaborators">
+    <div class = "Collaborators" id = "Collaborators" >
         <div class = "Guest" id="Guest1"> 
             <div class = "Guest_Button" >
             <button class = "closetab" onclick = "RemoveGuest(this);">

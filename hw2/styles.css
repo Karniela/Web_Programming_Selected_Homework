@@ -19,7 +19,7 @@ body{
     background: rgb(32,33,36);
     display:flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: left;
     padding:1em;
     color: #202124;
@@ -29,12 +29,14 @@ body{
 .People{
     display:flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 /*Host Section*/
 .Spotlight{
-    width: 73%;
+    flex-grow:1;
 }
 .Host{
+    flex-grow:1;
     background: rgb(32,33,36);
     display: flex;
     height: 700px;
@@ -124,16 +126,17 @@ body{
     justify-content: space-around;
     align-items: left;
     flex-wrap:wrap;
+    background: rgb(32,33,36);
 }
 .Guest{
     width:47%;
-    height:180px;
-    background: rgb(61,64,67);
+    height:30%;
+    background-color:rgb(61,64,67);
     display:flex;
     flex-direction: column;  
     justify-content: space-between; 
     align-items: left;
-    border-radius:5px
+    border-radius:5px;
     
 }
 .Guest_Button{
@@ -167,14 +170,22 @@ body{
     border-radius: 50%;
 }
 .name{
-    padding:1em;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position:relative;
+    align-items: left;
+    padding-left:1em;
+    padding-bottom: 1em;
     align-self: flex-start;
-    color: white;
+    color:white; 
 }   
 
 .Guest_Pic{
     position:relative;
-    transform: translate(30%, 0%);
+    transform: translate(30%, -20%);
+    display:flex;
+    flex-direction: row;
     align-self:center;
     border-radius:50%;
 }
@@ -188,8 +199,6 @@ body{
     flex-direction: row;
     justify-content: space-around;
     align-items:center;
-    left:-1.5em;
-    top:1em;
     position:absolute;
     border: none;
     padding: 0.5px;
@@ -200,6 +209,7 @@ body{
     border-radius: 30px;
     cursor:pointer;
     background-color: rgb(52,55,58); 
+    transform:translate(-20%, 70%);
     opacity: 0;
 }
 
