@@ -118,7 +118,7 @@ body{
 
 /*Guest Section*/
 .Collaborators{
-    
+    overflow:auto;
     width:27%;
     height:90%;
     position: relative;
@@ -133,6 +133,7 @@ body{
 .Guest{
     width:47%;
     height:30%;
+    margin-top: 1em;
     background-color:rgb(61,64,67);
     display:flex;
     flex-direction: column;  
@@ -351,4 +352,6 @@ body{
     outline:none;
 }
 
-
+#add_people{
+    background-color:darkgrey;
+}
