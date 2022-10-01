@@ -4,9 +4,8 @@ Basic Requirements:
 1. Exit sign for each participant
     - please notice that the exit sign is not enbled when guest is in spotlight(This can be self-defined, according to Prof.Huang.)
 2. Extra three buttons to pin the participant to spotlight
-3. Extra three buttons to pin the participant.
-4. When the participant is unpinned, window would be rearranged.
-5. If all participants are exited, the host would be back to spotlight.
+3. When the participant is unpinned, window would be rearranged.
+4. If all participants are exited, the host would be back to spotlight.
 
 Advanced Requirements:
 1. Show current time
