@@ -8,9 +8,10 @@ var Spotlight_Exist = true;
 function RemoveGuest(e){
     e.parentNode.parentNode.remove();
     console.log(collaborators.querySelectorAll(".Guest").length);
+    console.log(collaborators.querySelector(".Guest").firstChild.nextElementSibling.nextElementSibling.nextElementSibling);
     let Spotlight_pic = document.querySelector(".Spotlight_Pic").src;
     let Spotlight_name = document.querySelector(".Spotlight_id").innerHTML;
-    if (collaborators.querySelectorAll(".Guest").length===1){
+    if (collaborators.querySelectorAll(".Guest").length===1 && collaborators.querySelector(".Guest").firstChild.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML === "你"){
         Spotlight.style.display = "initial";
         Spotlight.style.width = "500%";
         Host.style.width = "100%";
