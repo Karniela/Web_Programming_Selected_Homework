@@ -30,6 +30,7 @@ body{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 100%;
 }
 /*Host Section*/
 .Spotlight{
@@ -117,8 +118,9 @@ body{
 
 /*Guest Section*/
 .Collaborators{
+    
     width:27%;
-    height:95%;
+    height:90%;
     position: relative;
     top: 50px;
     display:flex;
