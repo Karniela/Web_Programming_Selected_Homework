@@ -41,6 +41,11 @@ function RemoveGuest(e){
             all_participants[i].style.width = "47%";
             }
             all_participants[last_index].style.width = "75%";
+        }else{
+            for (var i = 0; i < participants_num; i++) {
+            console.log("change width");
+            all_participants[i].style.width = "47%";
+            }
         }
     if (participants_num%3 === 1 && Spotlight_Exist === false){
             for (var i = 0; i < participants_num; i++) {
@@ -157,6 +162,11 @@ function AddPeople(e){
                 }
                 
                 all_participants[last_index].style.width = "75%";
+            }else{
+                for (var i = 0; i < participants_num; i++) {
+                    console.log("change width");
+                    all_participants[i].style.width = "47%";
+                    }
             }
         if (participants_num%3 === 1 && Spotlight_Exist === false){
             for (var i = 0; i < participants_num; i++) {
