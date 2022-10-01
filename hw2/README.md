@@ -4,3 +4,7 @@ Basic Requirements:
 1. Exit sign for each participant
 2. Extra three buttons to pin the participant
 3. Unpin the participant and rearrange the window
+
+Advanced Requirements:
+1. Show current time
+2. 

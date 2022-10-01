@@ -4,21 +4,31 @@ const Spotlight =document.getElementById("Spotlight");
 const Guests = document.getElementsByClassName("Guest");
 const Host = document.getElementById("host_section");
 var Spotlight_Exist = true;
+var Today = new Date;
+
+// function to show current time
+
+function showtime(){
+    var time_now = Today.toLocaleTimeString();
+    return time_now
+}
+setInterval(() => {
+    document.getElementById("time").innerHTML = showtime();
+}, 1000);
+
 // function to remove guest 
 function RemoveGuest(e){
     e.parentNode.parentNode.remove();
-    console.log(collaborators.querySelectorAll(".Guest").length);
-    console.log(collaborators.querySelector(".Guest").firstChild.nextElementSibling.nextElementSibling.nextElementSibling);
-    let Spotlight_pic = document.querySelector(".Spotlight_Pic").src;
-    let Spotlight_name = document.querySelector(".Spotlight_id").innerHTML;
+    
     if (collaborators.querySelectorAll(".Guest").length===1 && collaborators.querySelector(".Guest").firstChild.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML === "你"){
+        
         Spotlight.style.display = "initial";
         Spotlight.style.width = "500%";
         Host.style.width = "100%";
         collaborators.display = "none";
-        collaborators.querySelector(".Guest").remove();
-        Spotlight_pic =  "https://spy-family.net/assets/img/special/anya/01.png";
-        Spotlight_name = "你";
+        collaborators.querySelector(".Guest").remove(); 
+        document.querySelector(".Spotlight_Pic").src =  "https://spy-family.net/assets/img/special/anya/01.png";
+        document.querySelector(".Spotlight_id").innerHTML = "你";
     }
 }
 
@@ -32,7 +42,7 @@ function RemoveSpotlight(e){
     colab_clone.firstChild.nextElementSibling.nextElementSibling.firstChild.nextElementSibling.src = Spotlight_pic;
     colab_clone.firstChild.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML = Spotlight_name;
     colab1.after(colab_clone);
-    console.log(colab_clone.firstChild.nextElementSibling.firstChild);
+    
     if (Spotlight_name === '你' ){
         colab_clone.firstChild.nextElementSibling.firstChild.nextElementSibling.style.display = "none";   
         }else{
