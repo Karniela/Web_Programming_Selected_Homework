@@ -133,6 +133,24 @@ function ChangeSpotlight(e){
         console.log(e.parentNode.parentNode);
         e.parentNode.parentNode.remove();
         Spotlight_Exist = true;
+
+        const all_participants = collaborators.querySelectorAll(".Guest");
+        const participants_num = all_participants.length;
+        var last_index = participants_num-1;
+
+        if (participants_num%2 !== 0){
+            for (var i = 0; i < participants_num; i++) {
+                console.log("change width");
+                all_participants[i].style.width = "47%";
+                }
+                
+                all_participants[last_index].style.width = "75%";
+            }else{
+                for (var i = 0; i < participants_num; i++) {
+                    console.log("change width");
+                    all_participants[i].style.width = "47%";
+                    }
+            }
     }   
 }
 
@@ -146,10 +164,13 @@ function AddPeople(e){
         var profile_image = prompt("Please choose your profile image(enter link)", "https://spy-family.net/assets/img/special/summermission04/05.png");
         var colab_clone = colab1.cloneNode(true);
         colab_clone.id = nickname;
+        
+        
         colab_clone.firstChild.nextElementSibling.nextElementSibling.firstChild.nextElementSibling.src = profile_image;
         colab_clone.firstChild.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML = nickname;
         colab1.after(colab_clone);
-        
+        console.log(colab_clone.firstChild.nextElementSibling.firstChild.nextElementSibling);
+        colab_clone.firstChild.nextElementSibling.firstChild.nextElementSibling.style.display = "initial";
         const all_participants = collaborators.querySelectorAll(".Guest");
         const participants_num = all_participants.length;
         var last_index = participants_num-1;
