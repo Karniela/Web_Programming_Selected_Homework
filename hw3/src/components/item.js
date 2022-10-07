@@ -17,9 +17,6 @@ function Item({items}){
             </li>
         ))
         }
-        
-        
-        
         </>
     )
 
