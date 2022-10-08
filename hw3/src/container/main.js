@@ -66,7 +66,8 @@ function Main(){
         const newItems = items.filter((item) => item.id !== id);
         setItems(newItems);
         checkListEmpty(newItems);
-
+        checkCompleted(newItems);
+        
     }
 
     //Filter completed items
@@ -84,6 +85,8 @@ function Main(){
             }
         }}
         console.log(completedItem);
+        checkCompleted(completedItem);
+        checkListEmpty(completedItem);
     }
 
     //Filter active items
@@ -101,6 +104,8 @@ function Main(){
             }
         }}
         console.log(todoList);
+        checkCompleted(todoList);
+        checkListEmpty(todoList);
     
     }
 
@@ -117,6 +122,8 @@ function Main(){
             todoList[i].style.display = '';
         }
         console.log(allItem);
+        checkCompleted(allItem);
+        checkListEmpty(allItem);
         
     }
     
@@ -135,8 +142,10 @@ function Main(){
     function clearCompleted(){
         let todoItem = items.filter((item) => item.isSelected !== true);
         setItems(todoItem);
-        checkCompleted(todoItem);
         checkListEmpty(todoItem);
+        setShowClear(false);
+        
+        
     }
 
     const completedNum = items.filter((item) => item.isSelected == true).length;
