@@ -36,7 +36,12 @@ function Main(){
     const itemIndex = event.id;
     if (event.checked) {
         detailText.style = 'text-decoration: line-through; opacity: 0.5';
-        items[itemIndex].isSelected = true;
+        //items[itemIndex].isSelected = true;
+        for(let i = 0; i < items.length; i++) {
+            if (items[i].id == itemIndex){
+                items[i].isSelected = true;
+            }
+        }
         
       } else {
         detailText.style = 'text-decoration: none; opacity: 1';
