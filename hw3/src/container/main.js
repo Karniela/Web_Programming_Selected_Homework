@@ -25,29 +25,21 @@ function Main(){
             setItems(newItems);
             setTotalItemCount(newTotalItemCount);
             setInputValue('');
-            checkListEmpty(items);
+            checkListEmpty(newItems);
         }   
     }
-    
-
-
     
     
    //Handle checkbox checked
    const handleChange = (event) =>{
     var detailText = event.nextElementSibling.parentElement.nextElementSibling;
     const itemIndex = event.id;
-    console.log(event);
     if (event.checked) {
         items[itemIndex].isSelected = true;
         detailText.style = 'text-decoration: line-through; opacity: 0.5';
-        
-        console.log(items);
- 
       } else {
         items[itemIndex].isSelected = false;
         detailText.style = 'text-decoration: none; opacity: 1';
-        console.log(items);
         }
 }
     //Check list empty
@@ -60,24 +52,65 @@ function Main(){
         }
     }
     
+    //Delete todo item (x)
+    //https://www.robinwieruch.de/react-remove-item-from-list/
+    const handleDelete = (id) =>{
+        const newItems = items.filter((item) => item.id !== id);
+        setItems(newItems);
+        checkListEmpty(newItems);
 
-
-    //Filter todo items
-    const filterTodo = (todos) => {
-        let todoItem = todos.filter(todo => !todo.isSelected);
-        return todoItem
     }
 
-    const countTodo = (todos) =>{
-        let todoItem = filterTodo(todos);
+    //Filter completed items
+    function filterCompleted(){
+        let completedItem = items.filter((item) => item.isSelected === true);
+        let todoList = document.getElementsByClassName("todo-app__item");
+        let todoLength = todoList.length;
+        for(let i = 0; i < todoLength; i++) {
+        for(let j = 0; j < completedItem.length; j++) {
+            if(completedItem[j].id == todoList[i].firstChild.firstChild.id){
+                todoList[i].style.display = '';
+                break
+            }else{
+                todoList[i].style.display = 'none';
+            }
+        }}
+        console.log(completedItem);
+    }
+
+    //Filter active items
+   function filterTodo(){
+        let todoItem = items.filter((item) => item.isSelected !== true);
+        let todoList = document.getElementsByClassName("todo-app__item");
+        let todoLength = todoList.length;
+        for(let i = 0; i < todoLength; i++) {
+        for(let j = 0; j < todoItem.length; j++) {
+            if(todoItem[j].id == todoList[i].firstChild.firstChild.id){
+                todoList[i].style.display = '';
+                break
+            }else{
+                todoList[i].style.display = 'none';
+            }
+        }}
+        console.log(todoList);
+    
+    }
+
+    function countTodo(todos){
+        let todoItem = items.filter((item) => item.isSelected !== true);
         return todoItem.length
     }
-
-
-
-
-
-
+    
+    //Filter all items
+    function filterAll(){
+        let allItem = items;
+        let todoList = document.getElementsByClassName("todo-app__item");
+        for(let i = 0; i < allItem.length; i++) {
+            todoList[i].style.display = '';
+        }
+        console.log(allItem);
+        
+    }
 
     //Mapping the items
     const allItems = items.map(item => (
@@ -88,7 +121,7 @@ function Main(){
         
         </div>    
         <h1 className="todo-app__item-detail">{item.itemName}</h1>
-        <img className="todo-app__item-x" src={x}></img>    
+        <img className="todo-app__item-x" src={x} onClick = {() => handleDelete(item.id)}></img>    
         </li>)
         
     );
@@ -101,7 +134,16 @@ function Main(){
                 {allItems}
                 </ul>
         </section>
-        {showFooter && <Footer text = {`${countTodo(items)} left`} id = 'footer'/>}
+        {showFooter && 
+                    <Footer 
+                    text = {`${countTodo(items)} left`} 
+                    id = 'footer'
+                    filterCompleted = {filterCompleted}
+                    filterTodo = {filterTodo}
+                    filterAll = {filterAll}
+                    />  
+                   
+        }
         </>
     );
 }
