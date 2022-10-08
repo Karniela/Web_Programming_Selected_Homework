@@ -24,12 +24,6 @@ function Item({items}){
     }
     
     
-    
-    
-    
-    
-    
-    
     return(
         //Render List
         //https://jasonwatmore.com/post/2020/09/13/react-display-a-list-of-items

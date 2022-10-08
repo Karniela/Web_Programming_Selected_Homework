@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import List from './list';
+import Header from './header';
+
+import Footer from './footer';
+import Item from '../components/item.js';
+
 
 
 function Main(){
@@ -23,17 +27,31 @@ function Main(){
             setTotalItemCount(newTotalItemCount);
             setInputValue('');
             //console.log(items.id);
+            let todoList = filterTodo(newItems);
+            console.log(todoList);
         }   
     }
 
+    const filterTodo = (todos) => {
+        let todoItem = todos.filter(todo => !todo.isSelected);
+        return todoItem
+    }
 
-
+    const countTodo = (todos) =>{
+        let todoItem = filterTodo(todos);
+        return todoItem.length
+    }
     return(
+        <>
        <section className="todo-app__main">
                 <input className="todo-app__input" value = {inputValue} onChange={(event) => setInputValue(event.target.value)} onKeyPress = {enterItem} placeholder = 'What needs to be done?'/>
-                <List items = {items}/>
+                <ul className="todo-app__list" id="todo-list">
+                <Item items={items}/>
+                </ul>
         </section>
-    )
+        <Footer text = {`${countTodo(items)} left`} />
+        </>
+    );
 }
 
 export default Main;

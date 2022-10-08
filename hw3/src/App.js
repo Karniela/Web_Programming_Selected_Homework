@@ -10,7 +10,7 @@ function App() {
     <div id = "appRoot" className="todo-app_root">
       <Header></Header>
       <Main></Main>
-      <Footer></Footer>
+      
     </div>
   );
 }

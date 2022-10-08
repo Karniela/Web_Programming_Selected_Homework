@@ -1,9 +1,9 @@
 //This is the footer of this app.
 
-function Footer(){
+function Footer(props){
     return(
         <footer className = "todo-app__footer" id= "todo-footer"> 
-            <div className="todo-app__total">0 left</div>
+            <div className="todo-app__total">{props.text}</div>
             <ul className="todo-app__view-buttons">
                 <button>All</button>
                 <button>Active</button>
