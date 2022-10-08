@@ -85,8 +85,6 @@ function Main(){
             }
         }}
         console.log(completedItem);
-        checkCompleted(completedItem);
-        checkListEmpty(completedItem);
     }
 
     //Filter active items
@@ -103,9 +101,12 @@ function Main(){
                 todoList[i].style.display = 'none';
             }
         }}
+        if (todoItem.length===0){
+            let list = document.getElementById("list_item");
+            list.style.display = 'none';   
+        }
         console.log(todoList);
-        checkCompleted(todoList);
-        checkListEmpty(todoList);
+       
     
     }
 
@@ -122,8 +123,7 @@ function Main(){
             todoList[i].style.display = '';
         }
         console.log(allItem);
-        checkCompleted(allItem);
-        checkListEmpty(allItem);
+        
         
     }
     
@@ -152,7 +152,7 @@ function Main(){
 
     //Mapping the items
     const allItems = items.map(item => (
-        <li className="todo-app__item" key={ item.id }>
+        <li className="todo-app__item" id='list_item' key={ item.id }>
         <div  className="todo-app__checkbox">
         <input type = "checkbox" id = {item.id} onChange={(event) => handleChange(event.target)}></input>
         <label htmlFor={item.id}></label>
