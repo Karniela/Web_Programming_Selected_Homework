@@ -126,6 +126,8 @@ input[type='checkbox'] {
     background: #26ca299b;
 }
 
+
+
 .todo-app__item-detail {
     font-weight: 300;
     overflow-wrap: break-word;

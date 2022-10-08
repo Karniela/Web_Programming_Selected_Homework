@@ -22,7 +22,7 @@ function Main(){
             setItems(newItems);
             setTotalItemCount(newTotalItemCount);
             setInputValue('');
-            console.log(items.id);
+            //console.log(items.id);
         }   
     }
 

@@ -2,7 +2,34 @@ import React, { useState } from 'react';
 import x from './x.png';
 
 function Item({items}){
-
+    // Change style of the detail text
+    // Change the selected status
+    
+    const handleChange = (event) =>{
+        var detailText = event.target.nextElementSibling.parentElement.nextElementSibling;
+        const itemIndex = event.target.id;
+        if (event.target.checked) {
+            items[itemIndex].isSelected = true;
+            detailText.style = 'text-decoration: line-through; opacity: 0.5';
+            
+            console.log(items);
+            console.log('Checkbox is checked');
+          } else {
+            items[itemIndex].isSelected = false;
+            detailText.style = 'text-decoration: none; opacity: 1';
+            
+            console.log(items);
+            console.log('Checkbox is NOT checked');
+            }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     return(
         //Render List
         //https://jasonwatmore.com/post/2020/09/13/react-display-a-list-of-items
@@ -12,8 +39,10 @@ function Item({items}){
         <>
         {items.map((item) => (
             <li className="todo-app__item" key={ item.id }>
-                <div  className="todo-app__checkbox" id = {item.id}>
-                    <input type="checkbox" id = {item.id} label = {item.id}></input>
+                <div  className="todo-app__checkbox">
+                <input type = "checkbox" id = {item.id} onChange={handleChange}></input>
+                <label htmlFor={item.id}></label>
+                
                 </div>    
                 <h1 className="todo-app__item-detail">{item.itemName}</h1>
                 <img className="todo-app__item-x" src={x}></img>    
