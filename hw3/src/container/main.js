@@ -26,7 +26,6 @@ function Main(){
             setTotalItemCount(newTotalItemCount);
             setInputValue('');
             checkListEmpty(newItems);
-            checkCompleted(newItems);
         }   
     }
     
@@ -36,12 +35,15 @@ function Main(){
     var detailText = event.nextElementSibling.parentElement.nextElementSibling;
     const itemIndex = event.id;
     if (event.checked) {
-        items[itemIndex].isSelected = true;
         detailText.style = 'text-decoration: line-through; opacity: 0.5';
+        items[itemIndex].isSelected = true;
+        
       } else {
-        items[itemIndex].isSelected = false;
         detailText.style = 'text-decoration: none; opacity: 1';
+        items[itemIndex].isSelected = false;
         }
+        checkListEmpty(items);
+        checkCompleted(items);
 }
     //Check list empty
     const checkListEmpty = (todos) => {
