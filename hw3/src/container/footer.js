@@ -10,9 +10,12 @@ function Footer(item){
                 <button onClick = {() => item.filterTodo(item)}>Active</button>
                 <button onClick = {() => item.filterCompleted(item)}>Completed</button>
             </ul>
-            <div className="todo-app__clean">
-                <button>Clear completed</button>
-            </div>
+            {item.showClear 
+            ?(<div className="todo-app__clean">
+                <button onClick = {() => item.clearCompleted(item)}>Clear completed</button>
+            </div>)
+            : null
+            }
         </footer>
     )
 }

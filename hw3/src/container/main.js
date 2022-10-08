@@ -10,7 +10,7 @@ function Main(){
     const [inputValue, setInputValue] = useState('');
     const [totalItemCount, setTotalItemCount] = useState(0);
     const [showFooter, setShowFooter] = useState(false);
-    
+    const [showClear, setShowClear] = useState(false);
 
     const enterItem = (event) => {
         if (event.key === 'Enter'){
@@ -26,6 +26,7 @@ function Main(){
             setTotalItemCount(newTotalItemCount);
             setInputValue('');
             checkListEmpty(newItems);
+            checkCompleted(newItems);
         }   
     }
     
@@ -111,6 +112,27 @@ function Main(){
         console.log(allItem);
         
     }
+    
+    // Check completed item exist
+     const checkCompleted = (completed) => {
+        if (completed.length > 0){ 
+            setShowClear(true);
+            console.log(showClear);
+        }else{
+            setShowClear(false);
+            console.log(showClear);
+        }
+    }
+
+    //Clear completed item
+    function clearCompleted(){
+        let todoItem = items.filter((item) => item.isSelected !== true);
+        setItems(todoItem);
+        checkCompleted(todoItem);
+        checkListEmpty(todoItem);
+    }
+
+    const completedNum = items.filter((item) => item.isSelected == true).length;
 
     //Mapping the items
     const allItems = items.map(item => (
@@ -141,6 +163,8 @@ function Main(){
                     filterCompleted = {filterCompleted}
                     filterTodo = {filterTodo}
                     filterAll = {filterAll}
+                    clearCompleted = {clearCompleted}
+                    showClear = {showClear}
                     />  
                    
         }
