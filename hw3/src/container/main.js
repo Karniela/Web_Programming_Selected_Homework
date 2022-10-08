@@ -52,7 +52,6 @@ function Main(){
 }
     //Check list empty
     const checkListEmpty = (todos) => {
-        
         if (todos.length === 0){ 
             setShowFooter(false);
         }else{
@@ -66,7 +65,7 @@ function Main(){
         const newItems = items.filter((item) => item.id !== id);
         setItems(newItems);
         checkListEmpty(newItems);
-        checkCompleted(newItems);
+        
         
     }
 
