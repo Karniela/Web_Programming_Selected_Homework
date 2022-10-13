@@ -7,9 +7,14 @@
 ****************************************************************************/
 
 export const revealed = (board, x, y, newNonMinesCount) => {
-    board[x][y].revealed = true;
-    newNonMinesCount--;
-
+    if (board[x][y].revealed ===true){
+      return
+    }else{
+      console.log(board[x][y].value);
+      board[x][y].revealed = true;
+      newNonMinesCount--;
+    }
+    
     // Advanced TODO: reveal cells in a more intellectual way.
     // Useful Hint: If the cell is already revealed, do nothing.
     //              If the value of the cell is not 0, only show the cell value.
