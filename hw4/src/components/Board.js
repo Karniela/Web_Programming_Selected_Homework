@@ -61,18 +61,20 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         let newBoard = JSON.parse(JSON.stringify(board));
         let newFlagNum = remainFlagNum;
         // 
+        if(gameOver === true){return}
         if(newBoard[x][y].revealed === true){return}
-        if(newFlagNum > 0){
-            if(newBoard[x][y].flagged !== true && newBoard[x][y].revealed !== true){
+        
+        if(newBoard[x][y].flagged === false && newBoard[x][y].revealed === false){
+            if(newFlagNum > 0){
                 newBoard[x][y].flagged = true;
                 newFlagNum --;
+            }else{return}
+        }else{
+            newBoard[x][y].flagged = false;
+            newFlagNum ++;
                 
-            }else{
-                newBoard[x][y].flagged = false;
-                newFlagNum ++;
-                
-            }
-        }else{return}
+        }
+        
         setRemainFlagNum(newFlagNum);
         setBoard(newBoard);
         console.log(remainFlagNum);
@@ -86,6 +88,25 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     const revealCell = (x, y) => {
         if (board[x][y].revealed || gameOver || board[x][y].flagged) return;
         let newBoard = JSON.parse(JSON.stringify(board));
+        
+        if (newBoard[x][y].value === '💣'){
+            if(newBoard[x][y].flagged === false){
+                for (let i=0; i<mineLocations.length; i++){
+                    newBoard[mineLocations[i][0]][mineLocations[i][1]].revealed = true;
+                    setBoard(newBoard);
+                    setNonMineCount(newBoard.newNonMinesCount);
+            }}
+            setGameOver(true);
+        }else{
+            let revealBoard = revealed(newBoard, x, y, nonMineCount);
+            setBoard(revealBoard.board);
+            setNonMineCount(revealBoard.newNonMinesCount);
+            if(revealBoard.newNonMinesCount===0){
+                setWin(true);
+                //setGameOver(true);
+            }
+
+        }
         
         // Basic TODO: Complete the conditions of revealCell (Refer to reveal.js)
         // Hint: If `Hit the mine`, check ...?
@@ -102,7 +123,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                 {/* Basic TODO: Implement Board 
                 Useful Hint: The board is composed of BOARDSIZE*BOARDSIZE of Cell (2-dimention). So, nested 'map' is needed to implement the board.
                 Reminder: Remember to use the component <Cell> and <Dashboard>. See Cell.js and Dashboard.js for detailed information. */}
-                <Dashboard></Dashboard>
+                <Dashboard remainFlagNum={remainFlagNum}/>
                 {board.map((row)=>(
                     <div id = {String(`row${row[0].x}`)} style = {{display: 'flex'}}>
                         {row.map((cell)=> (
