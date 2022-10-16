@@ -103,7 +103,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
             setNonMineCount(revealBoard.newNonMinesCount);
             if(revealBoard.newNonMinesCount===0){
                 setWin(true);
-                //setGameOver(true);
+                setGameOver(true);
             }
 
         }
