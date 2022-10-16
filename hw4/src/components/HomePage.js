@@ -70,16 +70,16 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
         <button className="btn" onClick={showDifAdj}>Difficulty Adjustment</button>
         {showPanel ? 
         <div className = 'controlWrapper'>
-          <div className='error' style = {{ color: (error) ? '#880000':'transparent'}}>ERROR: Mines number and board size are invalid!</div>
+          <div className='error' style = {{ color: error ? '#880000':'transparent'}}>ERROR: Mines number and board size are invalid!</div>
           <div className = 'controlCol'>
                 <p className="controlTitle">Mines Number</p>
                 <input name="mineControl" type="range" step="1" min='1' max='20' defaultValue='10' onChange={showMineError}/>
-                <p className = 'controlNum' style = {{ color: (error) ? '#880000':'#0f0f4b'}}>{mineNum}</p>
+                <p className = 'controlNum' style = {{ color: error ? '#880000':'#0f0f4b'}}>{mineNum}</p>
           </div>
           <div className = 'controlCol'>
                 <p className="controlTitle">Board Size(n x n)</p>
                 <input name="boardControl" type="range" step="1" min='1' max='20' defaultValue='8' onChange={showBoardError}/>
-                <p className = 'controlNum' style = {{ color: (error) ? '#880000':'#0f0f4b'}}>{boardSize}</p>
+                <p className = 'controlNum' style = {{ color: error ? '#880000':'#0f0f4b'}}>{boardSize}</p>
           </div>
         </div>
          : null}
