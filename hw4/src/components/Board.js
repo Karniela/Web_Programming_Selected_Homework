@@ -38,9 +38,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         setBoard(newBoard.board);
         setMineLocations(newBoard.mineLocations);
         setRemainFlagNum(mineNum);
-        const noMine = board.length**2 -  mineLocations.length;
-        console.log(board.length**2);
-        console.log(noMine);
+        const noMine = boardSize**2 -  mineNum;
         setNonMineCount(noMine);
         // Basic TODO: Use `newBoard` created above to set the `Board`.
         // Hint: Read the definition of those Hook useState functions and make good use of them.
@@ -94,16 +92,19 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                 for (let i=0; i<mineLocations.length; i++){
                     newBoard[mineLocations[i][0]][mineLocations[i][1]].revealed = true;
                     setBoard(newBoard);
-                    setNonMineCount(newBoard.newNonMinesCount);
+                    
             }}
             setGameOver(true);
         }else{
             let revealBoard = revealed(newBoard, x, y, nonMineCount);
+            console.log(nonMineCount);
             setBoard(revealBoard.board);
             setNonMineCount(revealBoard.newNonMinesCount);
+            console.log(revealBoard.newNonMinesCount);
             if(revealBoard.newNonMinesCount===0){
                 setWin(true);
                 setGameOver(true);
+                console.log("you win");
             }
 
         }
@@ -117,13 +118,12 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
 
     return (
         <div className='boardPage' >
-            <div className='boardWrapper' >
-                 
+            <div className='boardWrapper' > 
                 <div className='boardContainer'>
                 {/* Basic TODO: Implement Board 
                 Useful Hint: The board is composed of BOARDSIZE*BOARDSIZE of Cell (2-dimention). So, nested 'map' is needed to implement the board.
                 Reminder: Remember to use the component <Cell> and <Dashboard>. See Cell.js and Dashboard.js for detailed information. */}
-                <Dashboard remainFlagNum={remainFlagNum}/>
+                <Dashboard remainFlagNum={remainFlagNum} gameOver={gameOver}/>
                 {board.map((row)=>(
                     <div id = {String(`row${row[0].x}`)} style = {{display: 'flex'}}>
                         {row.map((cell)=> (
@@ -134,8 +134,9 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
 
                 </div>
                 {/* Advanced TODO: Implement Modal based on the state of `gameOver` */}
-
-                
+                {gameOver ?
+                <Modal  win ={win} backToHome={backToHome} restartGame={restartGame}/>
+                : null}
             </div>
         </div>
     );

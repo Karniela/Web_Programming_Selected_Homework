@@ -10,7 +10,7 @@ export const revealed = (board, x, y, newNonMinesCount) => {
     if (board[x][y].revealed ===true){
       return
     }else{
-      console.log(board[x][y].value);
+      //console.log(board[x][y].value);
       board[x][y].revealed = true;
       newNonMinesCount--;
     }

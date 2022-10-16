@@ -12,8 +12,8 @@ import React, { useState } from 'react';
 const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNum, boardSize /* -- something more... -- */ }) => {
   const [showPanel, setShowPanel] = useState(false);      // A boolean variable. If true, the controlPanel will show.
   const [error, setError] = useState(false);              // A boolean variable. If true, means that the numbers of mines and the board size are invalid to build a game.
-  const [MINENUM, setMINENUM] = useState(10);
-  const [BOARDSIZE, setBOARDSIZE] = useState(8);
+  const [mineNumber, setmineNumber] = useState(10);
+  const [boardSiz, setboardSiz] = useState(8);
 
   {/* Advanced TODO: Implementation of Difficult Adjustment
                      Some functions may be added here! */}
@@ -29,29 +29,29 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
   const showMineError=(e)=>{
     console.log("showMineError")
     console.log(e.target.value)
-    const newMINENUM = e.target.value
-    setMINENUM(newMINENUM);
-    if (BOARDSIZE * BOARDSIZE < newMINENUM){
+    const newmineNumber = e.target.value
+    setmineNumber(newmineNumber);
+    if (boardSiz * boardSiz < newmineNumber){
       setError(true);
     }else{
       setError(false);
     }
-    mineNumOnChange(newMINENUM);
+    mineNumOnChange(newmineNumber);
   }
 
   const showBoardError=(e)=>{
     console.log("showBoardError")
     console.log(e.target.value)
-    const newBOARDSIZE = e.target.value
-    setBOARDSIZE(newBOARDSIZE);
-    if (newBOARDSIZE * newBOARDSIZE < MINENUM){
+    const newboardSiz = e.target.value
+    setboardSiz(newboardSiz);
+    if (newboardSiz * newboardSiz < mineNumber){
       console.log("set true")
       setError(true);
     }else{
       setError(false);
       console.log("set false")
     }
-    boardSizeOnChange(newBOARDSIZE);
+    boardSizeOnChange(newboardSiz);
   }
 
 
