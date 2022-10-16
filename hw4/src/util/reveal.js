@@ -17,43 +17,43 @@ export const revealed = (board, x, y, newNonMinesCount) => {
       console.log(limitNum);
 
       //排除第一列和第一行的狀況（不能<0）
-      if(x>0 && board[x][y].value === 0 && board[x-1][y].revealed === false && board[x-1][y].flagged === false && board[x][y].value !== '💣'){
+      if(x>0 && board[x][y].value === 0 && board[x-1][y].revealed === false && board[x-1][y].flagged === false && board[x-1][y].value !== '💣'){
         board[x-1][y].revealed = true;
         newNonMinesCount--;
       }
       
-      if(y>0 && board[x][y].value === 0 && board[x][y-1].revealed === false && board[x][y-1].flagged === false && board[x][y].value !== '💣'){
+      if(y>0 && board[x][y].value === 0 && board[x][y-1].revealed === false && board[x][y-1].flagged === false && board[x][y-1].value !== '💣'){
         board[x][y-1].revealed = true;
         newNonMinesCount--;
       }
 
-      if(x>0 && y>0 && board[x][y].value === 0 && board[x-1][y-1].revealed === false && board[x-1][y-1].flagged === false && board[x][y].value !== '💣'){
+      if(x>0 && y>0 && board[x][y].value === 0 && board[x-1][y-1].revealed === false && board[x-1][y-1].flagged === false && board[x-1][y-1].value !== '💣'){
         board[x-1][y-1].revealed = true;
         newNonMinesCount--;
       }
       //排除第一列和第一行的狀況（不能<0）
       
-      if(x<limitNum && board[x][y].value === 0 && board[x+1][y].revealed === false && board[x+1][y].flagged === false && board[x][y].value !== '💣'){
+      if(x<limitNum && board[x][y].value === 0 && board[x+1][y].revealed === false && board[x+1][y].flagged === false && board[x+1][y].value !== '💣'){
         board[x+1][y].revealed = true;
         newNonMinesCount--;
       }
 
-      if(y<limitNum && board[x][y].value === 0 && board[x][y+1].revealed === false && board[x][y+1].flagged === false && board[x][y].value !== '💣'){
+      if(y<limitNum && board[x][y].value === 0 && board[x][y+1].revealed === false && board[x][y+1].flagged === false && board[x][y+1].value !== '💣'){
         board[x][y+1].revealed = true;
         newNonMinesCount--;
       }
 
-      if(x<limitNum && y<limitNum && board[x][y].value === 0 && board[x+1][y+1].revealed === false && board[x+1][y+1].flagged === false && board[x][y].value !== '💣'){
+      if(x<limitNum && y<limitNum && board[x][y].value === 0 && board[x+1][y+1].revealed === false && board[x+1][y+1].flagged === false && board[x+1][y+1].value !== '💣'){
         board[x+1][y+1].revealed = true;
         newNonMinesCount--;
       }
       
-      if(x>0 && y<limitNum && board[x][y].value === 0 && board[x-1][y+1].revealed === false && board[x-1][y+1].flagged === false && board[x][y].value !== '💣'){
+      if(x>0 && y<limitNum && board[x][y].value === 0 && board[x-1][y+1].revealed === false && board[x-1][y+1].flagged === false && board[x-1][y+1].value !== '💣'){
         board[x-1][y+1].revealed = true;
         newNonMinesCount--;
       }
 
-      if(y>0 && x<limitNum && board[x][y].value === 0 && board[x+1][y-1].revealed === false && board[x+1][y-1].flagged === false && board[x][y].value !== '💣'){
+      if(y>0 && x<limitNum && board[x][y].value === 0 && board[x+1][y-1].revealed === false && board[x+1][y-1].flagged === false && board[x+1][y-1].value !== '💣'){
         board[x+1][y-1].revealed = true;
         newNonMinesCount--;
       }
