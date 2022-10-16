@@ -31,7 +31,7 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
     console.log(e.target.value)
     const newmineNumber = e.target.value
     setmineNumber(newmineNumber);
-    if (boardSiz * boardSiz < newmineNumber){
+    if (boardSiz * boardSiz <= newmineNumber){
       setError(true);
     }else{
       setError(false);
