@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import guessRoute from './routes/guess'
+import guessRoute from './routes/guess.js'
 
 const app = express()
 

@@ -12,7 +12,7 @@ const guess = async (number) => {
         return msg
     }
     catch (error) {
-        return (`Error: "${number}" is not a valid number (1 - 100)`)
+        return (`Error: "${number}" is not a legal number (1 - 100)`)
     }
 }
 

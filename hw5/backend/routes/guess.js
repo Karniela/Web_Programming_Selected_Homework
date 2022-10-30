@@ -1,5 +1,5 @@
 import express from 'express'
-import {getNumber, genNumber} from '../core/getNumber'
+import {getNumber, genNumber} from '../core/getNumber.js'
 const router = express.Router();
 
 router.post('/start', (_, res) => {

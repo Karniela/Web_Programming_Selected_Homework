@@ -1,8 +1,8 @@
-let num = 0;
+let number = 0;
 
-const getNumber = () => {return num};
+const getNumber = () => {return number};
 const genNumber = () => {
-    num = Math.floor(Math.random() * 100+1);
-    return num;
+    number = Math.floor(Math.random() * 100+1);
+    return number;
 }
 export { getNumber, genNumber }
