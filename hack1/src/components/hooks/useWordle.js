@@ -60,18 +60,21 @@ const useWordle = (solution) => {
         console.log(guesses);*/
         // TODO 4: Check each wordbox's color in `curGuess` and update `guess`, `turn` and `curGuess`
         // Hint: check green first, and then check yellow.
-        /*let set = solution.split('');
-        
+        let set = solution.split('');
+        let curSet = curGuess.split('');
+        console.log(set);
+        console.log(curSet);
         for (let i=0; i<curGuess; i++){
             let currentColor = '';
-            if(curGuess[i]===solution[0]){
+            if(curGuess[i]===set[i]){
+                console.log(set);
                 currentColor='green'
-                
+                set = set.splice(i, 1);
                 console.log(set);
             }
             }
         
-            */
+            
         
         console.log(curGuess);
         // add the formatted guess generated into guesses.
