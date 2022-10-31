@@ -25,7 +25,7 @@ router.post('/start', (_, res) => {
     }})
   
     router.post('/restart', (_, res) => {
-      genNumber();  // 用亂數產生一個猜數字的 number
+      genNumber();  
       res.json({ msg: 'The game has started.' })
   })
   
