@@ -1,7 +1,11 @@
 import './App.css'
-import { Button, Input } from 'antd'
+import { Button, Input, Tag } from 'antd'
+import useChat from './useChat'
 
 function App() {
+  const { status, messages, sendMessage } = useChat()
+  const [username, setUsername] = useState('')
+  const [body, setBody] = useState('') // textBody
   return (
     <div className="App">
       <div className="App-title">
@@ -11,9 +15,15 @@ function App() {
         </Button>
       </div>
       <div className="App-messages">
-        <p style={{ color: '#ccc' }}>
-          No messages...
-        </p>
+        {messages.length === 0 ? (
+          <p style={{ color: '#ccc' }}> No messages... </p>
+        ) : (
+          messages.map(({ name, body }, i) => (
+            <p className="App-message" key={i}>
+              <Tag color="blue">{name}</Tag> {body}
+            </p>
+          ))
+        )}
       </div>
       <Input
         placeholder="Username"
