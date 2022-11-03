@@ -1,5 +1,5 @@
 import { Router } from "express";
-import ScoreCard from "../models/ScoreCard";
+import ScoreCard from "../models/ScoreCard.js";
 const ScoreCardRouter = Router();
 
 const deleteDB = async (req, res) =>{
