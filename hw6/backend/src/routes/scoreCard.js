@@ -46,6 +46,30 @@ const addCard = async (req, res) =>{
 }
 
 const queryCards = async (req, res) =>{
+    const queryType = req.query.type;
+    const queryString = req.query.queryString;
+    let filteredCard;
+    let message;
+
+    if (queryType==='name'){
+        const exist = await ScoreCard.findOne({name: queryString});
+        filteredCard = await ScoreCard.find({ name: queryString }).catch(err => {console.log(err);});
+        if(exist) {
+            res.json({messages: filteredCard});
+        }
+        else {
+            res.json({message: `Name (${queryString}) not found!`})
+        }
+    }else if (queryType==='subject'){
+        const exist = await ScoreCard.findOne({subject: queryString});
+        filteredCard = await ScoreCard.find({ subject: queryString }).catch(err => {console.log(err);});
+        if(exist) {
+            res.json({messages: filteredCard});
+        }
+        else {
+            res.json({message: `Name (${queryString}) not found!`})
+        }
+    }
     
 }
 
