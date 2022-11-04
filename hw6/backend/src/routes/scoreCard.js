@@ -13,20 +13,18 @@ const addCard = async (req, res) =>{
     const newSubject = req.body.subject;
     const newScore = req.body.score;
 
-    const cardExisted = await ScoreCard.findOne({ name: name, subject: subject });
+    const cardExisted = await ScoreCard.findOne({ name: newName, subject: newSubject });
+    // If the card existed, update the card.
+    // If not, add the card.
     if(cardExisted){
         try{
             let newCard = await ScoreCard.updateOne(
                 {name: newName, subject:newSubject},
                 {$set: {score: newScore}}
             )
-            res.json(
-                {message: `Updating (${newName}, ${newSubject}, ${newScore})`,
-                 card: newCard}
-            )
-        }catch(error){
-            res.json({message: error});
-        }
+            res.json({message: `Updating (${newName}, ${newSubject}, ${newScore})`, card: newCard})
+            console.log("update card");
+        }catch(error){res.json({message: error});}
     }else{
         const newScoreCard = new ScoreCard({
             name: newName,
@@ -35,46 +33,50 @@ const addCard = async (req, res) =>{
         })
         try{
             let newCard = await newScoreCard.save();
-            res.json(
-                {message: `Adding (${newName}, ${newSubject}, ${newScore})`,
-                 card: newCard}
-            )
-        }catch(error){
-            res.json({message: error});
-        }
+            res.json({message: `Adding (${newName}, ${newSubject}, ${newScore})`, card: newCard})
+            console.log("add card");
+        }catch(error){res.json({message: error});}
     }
 }
 
-const queryCards = async (req, res) =>{
+const queryCards = async (req, res) => {
+    //Show the card once queried.
     const queryType = req.query.type;
     const queryString = req.query.queryString;
-    let filteredCard;
-    let message;
-
-    if (queryType==='name'){
-        const exist = await ScoreCard.findOne({name: queryString});
-        filteredCard = await ScoreCard.find({ name: queryString }).catch(err => {console.log(err);});
-        if(exist) {
-            res.json({messages: filteredCard});
+    let filteredCards = [];
+    let messages = [];
+    let existed = false;
+    if (queryType === "name") {
+        existed = await ScoreCard.findOne({name: queryString});
+        filteredCards = await ScoreCard.find({ name: queryString }).catch(err => {console.log(err);});
+        if (existed) {
+            console.log(filteredCards);
+            filteredCards.forEach(card => messages.push(`Found card with ${queryType}: (${card.name}, ${card.subject}, ${card.score})`));
+            console.log(messages);
+            res.send({ messages: messages, cards: filteredCards});
+        } else {
+            res.send({ message: `${queryType} (${queryString}) not found!` });
         }
-        else {
-            res.json({message: `Name (${queryString}) not found!`})
-        }
-    }else if (queryType==='subject'){
-        const exist = await ScoreCard.findOne({subject: queryString});
-        filteredCard = await ScoreCard.find({ subject: queryString }).catch(err => {console.log(err);});
-        if(exist) {
-            res.json({messages: filteredCard});
-        }
-        else {
-            res.json({message: `Name (${queryString}) not found!`})
+    } else if (queryType === "subject") {
+        existed = await ScoreCard.findOne({name: queryString});
+        filteredCards = await ScoreCard.find({ subject: queryString }).catch(err => {console.log(err);});
+        if (existed) {
+            console.log(filteredCards);
+            filteredCards.forEach(card => messages.push(`Found card with ${queryType}: (${card.name}, ${card.subject}, ${card.score})`));
+            console.log(messages);
+            res.send({ messages: messages, cards: filteredCards});
+        } else {
+            res.send({ message: `${queryType} (${queryString}) not found!` });
         }
     }
+
+    
     
 }
 
-ScoreCardRouter.delete("/clear-db", deleteDB);
-ScoreCardRouter.post("/create-card", addCard);
-ScoreCardRouter.get("/query-cards", queryCards);
+
+ScoreCardRouter.delete("/cards", deleteDB);
+ScoreCardRouter.post("/card", addCard);
+ScoreCardRouter.get("/cards", queryCards);
 
 export default ScoreCardRouter;
