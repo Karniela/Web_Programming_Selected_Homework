@@ -57,8 +57,10 @@ const queryCards = async (req, res) => {
         } else {
             res.send({ message: `${queryType} (${queryString}) not found!` });
         }
-    } else if (queryType === "subject") {
-        existed = await ScoreCard.findOne({name: queryString});
+    } 
+    
+    if (queryType === "subject") {
+        existed = await ScoreCard.findOne({subject: queryString});
         filteredCards = await ScoreCard.find({ subject: queryString }).catch(err => {console.log(err);});
         if (existed) {
             console.log(filteredCards);
