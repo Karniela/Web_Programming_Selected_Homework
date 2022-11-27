@@ -1,4 +1,4 @@
-import Message from "./models/Message"
+import Message from "./models/Message.js"
 
 const sendData = (data, ws) => {ws.send(JSON.stringify(data)); }
 const sendStatus = (payload, ws) => {sendData(["status", payload], ws); }

@@ -1,22 +1,24 @@
 import http from 'http';
 import dotenv from 'dotenv-defaults';
 import mongoose from 'mongoose';
-import wsconnect from './wsConnect';
+import WebSocket, { WebSocketServer } from 'ws';
+import wsConnect from './wsConnect.js';
 import express from 'express';
-import mongo from './mongo'
+import mongo from './mongo.js'
+
+
 
 mongo.connect();
 
-const app = express()
-const server = http.createServer(app)
-const wss = new WebSocket.Server({ server })
-const db = mongoose.connection
+const app = express();
+const server = http.createServer(app);
+const wss = new WebSocketServer({ server });
+const db = mongoose.connection;
 
 db.once('open', () => {
     console.log("MongoDB connected!");
     wss.on('connection', (ws) => {
-        wsconnect.initData(ws);
-        wsconnect.onMessage(ws); 
+        ws.onmessage = wsConnect.onMessage(ws); 
     });
 });
 

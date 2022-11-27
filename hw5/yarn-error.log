@@ -1,0 +1,42 @@
+Arguments: 
+  /opt/homebrew/Cellar/node/18.4.0/bin/node /opt/homebrew/bin/yarn add axios
+
+PATH: 
+  /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/opt/homebrew/bin:/opt/homebrew/sbin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.4.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  SyntaxError: /Users/karnielaliao/Desktop/WB HW/wp1111/hw5/package.json: Unexpected token { in JSON at position 85
+      at JSON.parse (<anonymous>)
+      at /opt/homebrew/lib/node_modules/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /opt/homebrew/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "hw5",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+  
+  {"scripts" : {
+    "start": "cd frontend && yarn start",
+    "server": "cd backend && yarn server"
+  }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
