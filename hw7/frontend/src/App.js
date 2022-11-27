@@ -1,5 +1,5 @@
 import './App.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Button, Input, message, Tag } from 'antd'
 import useChat from './useChat'
 
@@ -7,10 +7,10 @@ import useChat from './useChat'
 
 
 function App() {
-  const { status, messages, sendMessage } = useChat()
+  const { status, messages, sendMessage, clearMessages } = useChat()
   const [username, setUsername] = useState('')
   const [body, setBody] = useState('') // textBody
-
+  const bodyRef = useRef(null)
 
   const displayStatus = (s) => {
     if (s.msg) {
@@ -35,7 +35,7 @@ function App() {
     <div className="App">
       <div className="App-title">
         <h1>Simple Chat</h1>
-        <Button type="primary" danger >
+        <Button type="primary" danger onClick={clearMessages}>
           Clear
         </Button>
       </div>
@@ -45,7 +45,7 @@ function App() {
           <p style={{ color: '#ccc' }}> No messages... </p>
         ) : (
           messages.map(({ name, body }, i) => (
-            <p className="App-message" key={i}>
+            <p key={i}>
               <Tag color="blue">{name}</Tag> {body}
             </p>
           ))
@@ -57,14 +57,26 @@ function App() {
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         style={{ marginBottom: 10 }}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            bodyRef.current.focus()
+        }}}
       ></Input>
       
       <Input.Search
+        ref={bodyRef}
         value={body}
         onChange={(e) => setBody(e.target.value)}
         enterButton="Send"
         placeholder="Type a message here..."
         onSearch={(msg) => {
+          if (!msg || !username) {
+            displayStatus({
+              type: 'error',
+              msg: 'Please enter a username and a message body.'
+            })
+          return
+          }
         sendMessage({ name: username, body: msg })
         setBody('')
         }}
