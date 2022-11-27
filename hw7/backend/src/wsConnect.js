@@ -11,12 +11,14 @@ export default {
     switch (task) {
     case 'input': {
     const { name, body } = payload
+    
     // Save payload to DB
     const message
     = new Message({ name, body })
     try { await message.save();
     } catch (e) { throw new Error
         ("Message DB save error: " + e); }
+    
     // Respond to client
     sendData(['output', [payload]], ws)
     sendStatus({
