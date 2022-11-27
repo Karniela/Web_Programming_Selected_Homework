@@ -4,7 +4,8 @@ const client = new WebSocket ('ws://localhost:4000')
 const useChat = () => {
     const [messages, setMessages] = useState([]);
     const [status, setStatus] = useState({});
-    
+    const [signedIn, setSignedIn] = useState({});
+
     client.onmessage = (byteString) => {
       const { data } = byteString;
       const [task, payload] = JSON.parse(data);
