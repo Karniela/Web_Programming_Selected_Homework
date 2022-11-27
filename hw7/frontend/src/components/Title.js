@@ -1,3 +1,6 @@
+import styled from 'styled-components';
+
+
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
@@ -9,6 +12,7 @@ const Wrapper = styled.div`
 }`;
 
 const Title = ({name}) => (
-    <Wrapper><h1>{name? `${name}'s`: "My"}
+    <Wrapper><h1>{name? `${name}'s`: "My "}
     Chat Room</h1></Wrapper>
 );
+export default Title;

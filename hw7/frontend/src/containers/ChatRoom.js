@@ -1,12 +1,12 @@
-import Title from '../Components/Title'
-import Message from '../Components/Message'
-import MessageWrapper from '../Components/MessageWrapper'
-import ChatModal from "../Components/ChatModal"
-import { Input, Tabs, Button } from 'antd'
+import styled from 'styled-components';
+import Title from '../components/Title.js'
+import Message from '../components/Message.js'
+import ChatModal from "../components/ChatModal.js"
+import { Input, Tag, Button, message } from 'antd'
 import { useState, useEffect, useRef } from 'react'
-import { useStatus } from "../Hooks/useStatus"
-import useChat from '../Hooks/useChat';
-import client from "../connection";
+import {ChatProvider, useChat} from './hooks/useChat.js';
+
+
 
 const ChatRoom = styled.div`
   display: flex;
@@ -33,30 +33,11 @@ function App() {
   const [username, setUsername] = useState('')
   const [body, setBody] = useState('') // textBody
   const bodyRef = useRef(null)
-
-  const displayStatus = (s) => {
-    if (s.msg) {
-      const { type, msg } = s;
-      const content = {
-        content: msg, duration: 0.5 }
-      switch (type) {
-        case 'success':
-          message.success(content)
-          break
-        case 'error':
-        default:
-          message.error(content)
-          break
-      }}}
-  
-  useEffect(() => {
-    displayStatus(status)}, [status])
-  
+  const { me, setMe, setSignedIn, displayStatus } = useChat();
 
   return (
     <ChatRoom>
-      <Title name:me>
-
+      <Title name = {me}> 
       </Title>
       
       <ChatBoxesWrapper>
@@ -72,8 +53,8 @@ function App() {
       </ChatBoxesWrapper>
 
       <Input
-        placeholder="Username"
-        value={username}
+        placeholder={me}
+        value={me}
         onChange={(e) => setUsername(e.target.value)}
         style={{ marginBottom: 10 }}
         onKeyDown={(e) => {

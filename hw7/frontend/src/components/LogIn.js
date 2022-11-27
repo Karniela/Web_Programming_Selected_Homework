@@ -1,5 +1,5 @@
 import { UserOutlined } from "@ant-design/icons";
-
+import { Input} from 'antd'
 const LogIn = ({me, setName, onLogin}) => {
     return (
         <Input.Search
@@ -13,3 +13,4 @@ const LogIn = ({me, setName, onLogin}) => {
            onSearch={(name) => onLogin(name)}
      />
     );}
+export default LogIn;
