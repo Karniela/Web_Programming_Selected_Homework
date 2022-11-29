@@ -13,6 +13,7 @@ const Filter = ({ priceFilter, setPriceFilter, mealFilter, setMealFilter, typeFi
     const PriceTag = ["$", "$$", "$$$"]
     const MealTag = ["Breakfast", "Lunch", "Dinner"]
     const TypeTag = ["Chinese", "American", "Italian", "Japanese", "Korean", "Thai"]
+   
     const getTagString = () => {
         const getSingleCategoryTag = (tag, filter, result) => {
             for(let i=0; i<tag.length; i++){
@@ -34,6 +35,17 @@ const Filter = ({ priceFilter, setPriceFilter, mealFilter, setMealFilter, typeFi
 
     const modifyFilter = (key, filter) => {
         // TODO Part II-1: change filter state on clicking the pertaining checkboxes
+        
+        console.log(filter);
+        console.log(key);
+        
+        if (filter.includes(key)){
+            filter = filter.filter(item => item !== key)
+        }else{
+            filter.push(key)
+        }
+        //filter.join(', ')
+        console.log(filter);
         return filter
     }
 
@@ -41,6 +53,7 @@ const Filter = ({ priceFilter, setPriceFilter, mealFilter, setMealFilter, typeFi
         priceFilter = modifyFilter(key, priceFilter)
         setPriceFilter(priceFilter)
         setDisplay(getTagString())
+        console.getTagString();
     }
 
     const modifyMealFilter = (key) => {

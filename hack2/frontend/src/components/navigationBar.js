@@ -39,6 +39,7 @@ const NavBar = () => {
         // TODO Part I-1: navigation to search page
         // See README for hint
         // FIXME - Modify below
+        console.log("-----------Onsearch-------------")
         navigate('/search', {
             state: {
                 priceFilter: priceFilter,
@@ -47,7 +48,7 @@ const NavBar = () => {
                 sortBy: sortMethod,
             }
         });
-        console.log('start searching');
+        
 
     };
     return (

@@ -24,6 +24,9 @@ const RestaurantPage = () => {
     const [loading, setLoading] = useState(true)
     const getInfo = async () => {
         // TODO Part III-2: get a restaurant's info
+        const data = await instance.get('/getInfo', {params: {info}})
+            console.log('Succefully Got Info');
+            console.log(data);
     }
     const getComments = async () => {
         // TODO Part III-3: get a restaurant's comments 

@@ -24,11 +24,11 @@ const SearchPage = () => {
         try{
             const data = await instance.get('/getSearch', {params: {restaurants}})
             console.log('Succefully Searched');
-            const contents = data.data.contents.allInfo
+            const contents = data.data.contents
             console.log(contents)
             
             setRestaurant(contents);
-            console.log(restaurants)
+            
         }catch(error){ 
             console.log(error)
             throw new Error('Network Error(HTTP:500)! Contact the server owner');}
@@ -43,6 +43,9 @@ const SearchPage = () => {
     const navigate = useNavigate();
     const ToRestaurant = (id) => {
         // TODO Part III-1: navigate the user to restaurant page with the corresponding id
+        console.log("Go to restaurant")
+        console.log(id)
+        navigate(`/restaurant/${id}`);
     }
     const getPrice = (price) => {
         let priceText = ""
@@ -56,9 +59,9 @@ const SearchPage = () => {
         <div className='searchPageContainer'>
             {
                 restaurants.map((item) => (
-
-                    <div className='resBlock' id={item.id} key={item.id}>
-                        <div className='resImgContainer'>
+                    <>
+                    <div className='resBlock' id={item.id} key={item.id} onClick={() => ToRestaurant(item.id)}>
+                        <div className='resImgContainer' >
                             <img className='resImg' src={item.img}/>
                         </div>
                         <div className='resInfo'>
@@ -67,10 +70,10 @@ const SearchPage = () => {
                                 <p className='price'>{getPrice(item.price)}</p>
                                 <p className='distance'>{item.distance/1000} km</p>
                             </div>
-                                <p className='discription'>{item.tag.map((i, index)=> <span>{i}{index < item.tag.length - 1 ? ", " : ""}</span>)}</p>
+                                <p className='description'>{item.tag.map((i, index)=> <span>{i}{index < item.tag.length - 1 ? ", " : ""}</span>)}</p>
                         </div>
                     </div>
-                    
+                    </>
                 ))
             }
         </div>
