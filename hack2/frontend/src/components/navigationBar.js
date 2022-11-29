@@ -41,12 +41,13 @@ const NavBar = () => {
         // FIXME - Modify below
         navigate('/search', {
             state: {
-                priceFilter: undefined,
-                mealFilter: undefined,
-                typeFilter: undefined,
-                sortBy: undefined
+                priceFilter: priceFilter,
+                mealFilter: mealFilter,
+                typeFilter: typeFilter,
+                sortBy: sortMethod
             }
         });
+        console.log('start searching');
 
     };
     return (

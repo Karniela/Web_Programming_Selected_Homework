@@ -19,7 +19,14 @@ const SearchPage = () => {
     const { state } = useLocation();
     const [restaurants, setRestaurant] = useState([])
     const getRestaurant = async () => {
+
         // TODO Part I-3-b: get information of restaurants from DB
+        try{
+            const{data:{data}} = await instance.get()
+        }catch(error){
+            console.log(error)
+            throw new Error('Network Error(HTTP:500)! Contact the server owner');
+          }
     }
 
     useEffect(() => {
@@ -54,8 +61,9 @@ const SearchPage = () => {
                                 <p className='name'>{item.name}</p>
                                 <p className='price'>{getPrice(item.price)}</p>
                                 <p className='distance'>{item.distance}</p>
+                                <p className='discription'></p>
                             </div>
-                            <p className='discription'></p>
+                           
                         </div>
 
 

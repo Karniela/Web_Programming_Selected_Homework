@@ -8,6 +8,7 @@
 // *
 // * ////////////////////////////////////////////////////////////////////////
 
+import exportSchema from '../models/info'
 import Info from '../models/info'
 
 exports.GetSearch = async (req, res) => {
@@ -27,7 +28,21 @@ exports.GetSearch = async (req, res) => {
     
 
     // TODO Part I-3-a: find the information to all restaurants
+
+    const allInfo = await Info.find()
+
+    try{
+    const price = await exportSchema.find({priceFilter});
+    const meal = await exportSchema.find({mealFilter});
+    const type = await exportSchema.find({typeFilter});
+    const sort = await exportSchema.find({sortBy});
+    res.status(200).send({ message: 'success' })
+    }
     
+    catch(err){
+        console.log("Something error:" + err)
+        res.status(403).send({ message: 'error', contents:[]})
+    }
     // TODO Part II-2-a: revise the route so that the result is filtered with priceFilter, mealFilter and typeFilter
     // TODO Part II-2-b: revise the route so that the result is sorted by sortBy
 }
