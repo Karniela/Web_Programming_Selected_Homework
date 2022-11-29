@@ -22,11 +22,17 @@ const SearchPage = () => {
 
         // TODO Part I-3-b: get information of restaurants from DB
         try{
-            const{data:{data}} = await instance.get()
-        }catch(error){
+            const data = await instance.get('/getSearch', {params: {restaurants}})
+            console.log('Succefully Searched');
+            const contents = data.data.contents.allInfo
+            console.log(contents)
+            
+            setRestaurant(contents);
+            console.log(restaurants)
+        }catch(error){ 
             console.log(error)
-            throw new Error('Network Error(HTTP:500)! Contact the server owner');
-          }
+            throw new Error('Network Error(HTTP:500)! Contact the server owner');}
+        
     }
 
     useEffect(() => {
@@ -50,8 +56,7 @@ const SearchPage = () => {
         <div className='searchPageContainer'>
             {
                 restaurants.map((item) => (
-                    
-                    <>
+
                     <div className='resBlock' id={item.id} key={item.id}>
                         <div className='resImgContainer'>
                             <img className='resImg' src={item.img}/>
@@ -60,15 +65,12 @@ const SearchPage = () => {
                             <div className='title'>
                                 <p className='name'>{item.name}</p>
                                 <p className='price'>{getPrice(item.price)}</p>
-                                <p className='distance'>{item.distance}</p>
-                                <p className='discription'></p>
+                                <p className='distance'>{item.distance/1000} km</p>
                             </div>
-                           
+                                <p className='discription'>{item.tag.map((i, index)=> <span>{i}{index < item.tag.length - 1 ? ", " : ""}</span>)}</p>
                         </div>
-
-
                     </div>
-                    </>
+                    
                 ))
             }
         </div>

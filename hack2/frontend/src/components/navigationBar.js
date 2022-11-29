@@ -44,7 +44,7 @@ const NavBar = () => {
                 priceFilter: priceFilter,
                 mealFilter: mealFilter,
                 typeFilter: typeFilter,
-                sortBy: sortMethod
+                sortBy: sortMethod,
             }
         });
         console.log('start searching');

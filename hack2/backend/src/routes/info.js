@@ -30,13 +30,16 @@ exports.GetSearch = async (req, res) => {
     // TODO Part I-3-a: find the information to all restaurants
 
     const allInfo = await Info.find()
+    console.log(allInfo);
 
     try{
-    const price = await exportSchema.find({priceFilter});
+    const price = await exportSchema.find({priceFilter, mealFilter, typeFilter, sortBy});
     const meal = await exportSchema.find({mealFilter});
     const type = await exportSchema.find({typeFilter});
     const sort = await exportSchema.find({sortBy});
-    res.status(200).send({ message: 'success' })
+    
+    res.status(200).send({ message: 'success', contents:{allInfo} })
+    console.log('searched')
     }
     
     catch(err){
