@@ -32,7 +32,6 @@ exports.GetSearch = async (req, res) => {
     const allInfo = await Info.find();
     const allInfo_len = allInfo.length;
 
-    const info = [allInfo_len, allInfo]
     try{
     const price = await exportSchema.find({priceFilter, mealFilter, typeFilter, sortBy});
     const meal = await exportSchema.find({mealFilter});
@@ -69,9 +68,17 @@ exports.GetInfo = async (req, res) => {
     // }
 
     // TODO Part III-2: find the information to the restaurant with the id that the user requests
-    const resInfo = await exportSchema.find({id:id});
+    try{
+    const resInfo = await Info.find({id:id});
     console.log(resInfo);
+    res.status(200).send({ message: 'success', contents:resInfo })
+    }
 
+    catch(err){
+    res.status(403).send({ message: 'error', contents:[]})
+    console.log("Something error:" + err)
+    
+    }
 
 
 

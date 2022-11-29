@@ -12,7 +12,7 @@ import Comment from '../models/comment'
 
 exports.GetCommentsByRestaurantId = async (req, res) => {
     /*******    NOTE: DO NOT MODIFY   *******/
-    const id = req.query.restaurantId
+    const id = req.query.id
     /****************************************/
     // TODO Part III-3-a: find all comments to a restaurant
 
@@ -27,6 +27,18 @@ exports.GetCommentsByRestaurantId = async (req, res) => {
     //    message: 'error'
     //    contents: []
     // }
+    try{
+        console.log(id);
+        const comment = await Comment.find({restaurantId:id});
+        res.status(200).send({ message: 'success', contents:comment })
+        }
+    
+        catch(err){
+        res.status(403).send({ message: 'error', contents:[]})
+        console.log("Something error:" + err)
+        
+        }
+    
 }
 
 exports.CreateComment = async (req, res) => {

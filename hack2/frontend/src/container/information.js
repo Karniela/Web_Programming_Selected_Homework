@@ -16,6 +16,14 @@ const Information = ({ info, rating }) => {
         return (
             <>
                 {/* TODO Part III-2-a render tags */}
+               
+                {info.tag.map((item) => (
+                
+                    <div className='tag' key={item}>{item}</div>
+                
+                ))}
+                
+
             </>
         )
     }
@@ -25,6 +33,7 @@ const Information = ({ info, rating }) => {
             priceText += "$"
         return (
             <>
+                <div className='tag' key={price}>{priceText}</div>
                 {/* TODO Part III-2-a render price tags; hint: convert price number to dollar signs first */}
             </>
         )

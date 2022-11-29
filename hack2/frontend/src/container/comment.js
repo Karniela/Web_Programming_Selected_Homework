@@ -36,6 +36,7 @@ const Comment = ({ restaurantId, comments, setComments, setLoad }) => {
     const submitComment = () => {
         // TODO Part III-3-b: submit a comment and reset input fields
     }
+    
     return (
         <div className='commentContainer'>
             <div className='inputContainer'>
@@ -60,7 +61,7 @@ const Comment = ({ restaurantId, comments, setComments, setLoad }) => {
             <div className='comments'>
                 {
                     comments.map((comment) => (
-                        <div className='comment' key={comment.name}>
+                        <div className='comment' key={comment.content}>
                             <div className='title'>
                                 <div className='info'>
                                     <p className='name'> {comment.name} </p>

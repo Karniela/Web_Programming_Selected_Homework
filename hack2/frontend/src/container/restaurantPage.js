@@ -19,17 +19,29 @@ const instance = axios.create({
 
 const RestaurantPage = () => {
     const { id } = useParams()
+    
     const [info, setInfo] = useState({})
     const [comments, setComments] = useState([])
     const [loading, setLoading] = useState(true)
+
     const getInfo = async () => {
         // TODO Part III-2: get a restaurant's info
-        const data = await instance.get('/getInfo', {params: {info}})
-            console.log('Succefully Got Info');
-            console.log(data);
+        const data = await instance.get('/getInfo', {params: {id}})
+        console.log('Succefully Got Info');
+        console.log(id)
+        const infoContent = data.data.contents[0]
+        console.log(infoContent)
+        setInfo(infoContent);
+        
     }
     const getComments = async () => {
         // TODO Part III-3: get a restaurant's comments 
+        const comments = await instance.get('/getCommentsByRestaurantId', {params: {id}})
+        console.log(id);
+        console.log('Succefully Got Comments');
+        const com = comments.data.contents
+        console.log(com);
+        setComments(com)
     }
     useEffect(() => {
         if (Object.keys(info).length === 0) {
@@ -39,6 +51,7 @@ const RestaurantPage = () => {
     
     useEffect(() => {
         // TODO Part III-3-c: update the comment display immediately after submission
+        getComments()
     }, [comments])
 
     /* TODO Part III-2-b: calculate the average rating of the restaurant */
