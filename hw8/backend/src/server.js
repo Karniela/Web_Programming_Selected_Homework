@@ -1,31 +1,94 @@
-import http from 'http';
-import express from 'express';
-import mongoose from 'mongoose';
-import WebSocket from 'ws';
-import mongo from './mongo';
-import wsConnect from './wsConnect'
-import {v4 as uuidv4} from 'uuid';
+import { createPubSub, createSchema, createYoga } from 'graphql-yoga'
+import { createServer } from 'node:http'
+import { useServer } from 'graphql-ws/lib/use/ws'
+import { WebSocketServer } from 'ws'
+import * as fs from 'fs'
+import ChatBoxModel from './models/chatbox.js'
+import Query from './resolvers/Query';
+import Mutation from './resolvers/Mutation';
+import Subscription from './resolvers/Subscription';
 
-mongo.connect();
+/*
+import User from './resolvers/User';
+import Post from './resolvers/Post';
+import Comment from './resolvers/Comment';
+*/
+//const pubsub = createPubSub();
 
-const app = express()
-const server = http.createServer(app)
-const wss = new WebSocket.Server({ server })
-const db = mongoose.connection
-
-
-db.once('open', () => {  
-    console.log("MongoDB connected!"); 
-    wss.on('connection', (ws) => {
-        //wsConnect.initData(ws);
-        ws.id = uuidv4(); 
-        ws.box = ''; //用來記錄目前 active ChatBox name
-        ws.onmessage = wsConnect.onMessage(ws, wss);
-    });
+const yoga = createYoga({
+  schema: createSchema({
+    typeDefs: fs.readFileSync(
+      './src/schema.graphql',
+      'utf-8'
+    ),
+    resolvers: {
+      Query,
+      Mutation,
+      Subscription,
+/*
+      User,
+      Post,
+      Comment,
+*/
+    },
+  }),
+  context: {
+    ChatBoxModel,
+    //pubsub,
+  },
+  /*
+  graphqlEndpoint: '/',   // uncomment this to send the app to: 4000/
+  graphiql: {
+    subscriptionsProtocol: 'WS',
+  },
+  */
 });
 
-const port = process.env.PORT || 4000
-server.listen(port, () => {
-    console.log(`Server is up on port ${port}.`)
-}) 
+const server = createServer(yoga)
 
+/*
+const wsServer = new WebSocketServer({
+  server: server,
+  path: yoga.graphqlEndpoint,
+})
+*/
+export default server;
+/*
+useServer(
+  {
+    execute: (args) => args.rootValue.execute(args),
+    subscribe: (args) => args.rootValue.subscribe(args),
+    onSubscribe: async (ctx, msg) => {
+      const { schema, execute, subscribe, contextFactory, parse, validate } =
+        yoga.getEnveloped({
+          ...ctx,
+          req: ctx.extra.request,
+          socket: ctx.extra.socket,
+          params: msg.payload
+        })
+
+      const args = {
+        schema,
+        operationName: msg.payload.operationName,
+        document: parse(msg.payload.query),
+        variableValues: msg.payload.variables,
+        contextValue: await contextFactory(),
+        rootValue: {
+          execute,
+          subscribe
+        }
+      }
+
+      const errors = validate(args.schema, args.document)
+      if (errors.length) return errors
+      return args
+    },
+  },
+  wsServer,
+)
+
+const port = process.env.PORT || 4000;
+server.listen({port}, () => {
+  console.log(`The server is up on port ${port}!`);
+});
+*/

@@ -8,19 +8,16 @@ const Schema = mongoose.Schema
 })
 const UserModel = mongoose.model("User", UserSchema);*/
 
-const MessageSchema = new Schema({
-  //chatBox: {type: mongoose.Types.ObjectId, ref: "ChatBox"},
-  sender: {type: String, required: [true, "Sender field is required."]}, 
-  body: {type: String, required: [true, 'Body field is required.']}
-})
-const MessageModel = mongoose.model("Message", MessageSchema);
+const ChatBoxSchema = new Schema({
+  name: {
+    type: String,
+    required:
+    [true, 'Name field is required.']
+  },
+  messages: [{
+    sender: { type: String },
+    body  : { type: String }, }],
+});
+const ChatBoxModel = mongoose.model('ChatBox',ChatBoxSchema);
 
-const chatBoxSchema = new Schema({
-  name: {type: String, required: [true, "Name field is required."]},
-  users: [{type: String, required: [true, "User field is required."]}],
-  message: [{type: mongoose.Types.ObjectId, ref: "Message"}]
-})
-const ChatBoxModel = mongoose.model("ChatBox", chatBoxSchema);
-
-
-export { MessageModel, ChatBoxModel};
+export { ChatBoxModel};

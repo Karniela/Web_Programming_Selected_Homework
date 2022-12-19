@@ -3,10 +3,10 @@ import dotenv from 'dotenv-defaults';
 export default {
   connect: () => {
     dotenv.config();
-    if (!process.env.MONGO_URL) {
+    /*if (!process.env.MONGO_URL) {
       console.error("Missing MONGO_URL!!!");
       process.exit(1);
-    }
+    }*/
     mongoose
     .connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
@@ -18,4 +18,3 @@ export default {
         console.error.bind(console, 'connection error:'));
   }
 };
- 
