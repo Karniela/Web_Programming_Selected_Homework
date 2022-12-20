@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import Title from './Title';
 
 function Balance({ items }) {
+  
   const total = items.reduce((acc, item) => {
     if (item.category === 'INCOME') {
       return acc + item.amount;
