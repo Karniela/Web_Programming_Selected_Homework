@@ -1,9 +1,20 @@
 import {v4 as uuidv4} from 'uuid';
+import { ChatBoxModel } from "../models/chatbox.js";
 
 // in "resolvers/Mutation.js"
 const makeName = (name, to) => {
   return [name, to].sort().join('_');
 }
+
+const checkOutChatBox = async(name, to) => {
+  const chatName = makeName(name, to)
+  console.log(chatName)
+  let box = await ChatBoxModel.findOne({ name:chatName });
+    if (!box) {
+        box = await new ChatBoxModel({ name:chatName }).save();
+    }
+  return box
+};
 
 const Mutation = {
   createChatBox: (parent, { name1, name2 } ) => {

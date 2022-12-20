@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const POSTS_QUERY = gql`
+export const CHATBOX_QUERY = gql`
   query {
     posts {
       title

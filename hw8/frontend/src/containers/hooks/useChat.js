@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "@apollo/client";
-import { CHATBOX_QUERY, CREATE_CHATBOX_MUTATION,MESSAGE_SUBSCRIPTION } from "../../graphql";
+import { CHATBOX_QUERY, CREATE_CHATBOX_MUTATION,MESSAGE_SUBSCRIPTION } from "../../graphql/index.js";
 import { createContext, useContext, useState, useEffect } from "react";
 import {message} from "antd";
 
@@ -25,13 +25,14 @@ const ChatProvider = (props) => {
     const [me, setMe] = useState(savedMe || "");
     const [signedIn, setSignedIn] = useState(false);
 
-    const { data, loading, subscribeToMore }
+    /*const { data, loading, subscribeToMore }
     = useQuery(CHATBOX_QUERY, {
       variables: {
         name1: me,
         name2: friend,
     }, });
-
+    */
+   
     client.onmessage = (byteString) => {
          const { data } = byteString;
          const [task, payload] = JSON.parse(data);

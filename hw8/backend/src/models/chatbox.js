@@ -9,15 +9,11 @@ const Schema = mongoose.Schema
 const UserModel = mongoose.model("User", UserSchema);*/
 
 const ChatBoxSchema = new Schema({
-  name: {
-    type: String,
-    required:
-    [true, 'Name field is required.']
-  },
+  name: {type: String,required:[true, 'Name field is required.']},
   messages: [{
     sender: { type: String },
     body  : { type: String }, }],
 });
 const ChatBoxModel = mongoose.model('ChatBox',ChatBoxSchema);
 
-export { ChatBoxModel};
+export {ChatBoxModel};

@@ -9,7 +9,7 @@ import { ChatProvider } from "./containers/hooks/useChat"
 import App from "./containers/App";
 import reportWebVitals from "./reportWebVitals";
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'http://localhost:4000/',
   cache: new InMemoryCache(),
 });
 const root = ReactDOM.createRoot(document.getElementById("root"));

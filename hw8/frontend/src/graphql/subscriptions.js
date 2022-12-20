@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const POSTS_SUBSCRIPTION = gql`
+export const MESSAGE_SUBSCRIPTION = gql`
   subscription {
     post {
       mutation
