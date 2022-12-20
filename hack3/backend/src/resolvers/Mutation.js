@@ -42,7 +42,7 @@ const Mutation = {
       console.log('DB error');
     }
     // TODO 6.3 Add Subscription
-    pubSub.publish("TASK_DELETED", {
+    pubSub.publish("ITEM_DELETED", {
       itemDeleted: id,
     });
     return id
