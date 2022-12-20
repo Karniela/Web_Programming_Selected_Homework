@@ -45,7 +45,7 @@ function Home() {
     },
     [subscribeToMore],
   );
-  
+  /*
   useEffect(
     () => {
       subscribeToMore({
@@ -61,7 +61,7 @@ function Home() {
     },
     [subscribeToMore],
   );
-
+    */
 
   
   
