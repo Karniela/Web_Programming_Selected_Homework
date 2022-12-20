@@ -5,10 +5,10 @@ import { GET_ITEMS_QUERY } from '../graphql/queries';
 import Balance from './Balance';
 import Category from './Category';
 
-function Analytics() {
+ function Analytics() {
   // TODO 2.2 Use the useQuery hook to get items from backend
   const {
-    loading, error, data: {items}, subscribeToMore,
+    data: {items}
   } = useQuery(GET_ITEMS_QUERY);
   
   // TODO 2.2 End

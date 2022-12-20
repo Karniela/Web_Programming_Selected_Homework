@@ -12,6 +12,7 @@ import EditIcon from '@mui/icons-material/Edit';
 
 import dayjs from '../utils/day';
 import ItemFormModal from './ItemFormModal';
+import { ListItemSecondaryAction } from '@mui/material';
 
 function Row({
   item, updateItem, deleteItem,
@@ -40,10 +41,17 @@ function Row({
   };
 
   const handleSubmitEdit = (formData) => {
+    console.log(formData.name)
     updateItem({
       variables: {
         // TODO 4 Use `updateItem` and pass the correct variables
-        
+        input: {
+          name: formData.name,
+          amount: formData.amount,
+          category:formData.category,
+          date: formData.date,
+          description: formData.description
+        },
         // TODO End
         onError: (err) => {
           // eslint-disable-next-line no-console
