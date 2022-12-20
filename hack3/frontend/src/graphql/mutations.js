@@ -20,11 +20,6 @@ export const UPDATE_ITEM_MUTATION = gql`
   mutation UpdateItem($input: UpdateItemInput!) {
     updateItem(input: $input) {
       id
-      name
-      amount
-      category
-      date
-      description
     }
   }
 `;

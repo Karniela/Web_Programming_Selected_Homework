@@ -35,6 +35,22 @@ const Mutation = {
     return newItem;
   },
   // TODO 5.2 Define the itemDelete mutation resolver
+  deleteItem: async (parent, { id }, { itemModel, pubSub }) => {
+    try {
+      await itemModel.deleteOne({ id })
+    } catch (e) {
+      console.log('DB error');
+    }
+    // TODO 6.3 Add Subscription
+    pubSub.publish("TASK_DELETED", {
+      itemDeleted: id,
+    });
+    return id
+  }
+
+
+
+
   // TODO 6.3 Publish itemDeleted
 
   // TODO 5.2 End
