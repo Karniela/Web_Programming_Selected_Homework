@@ -4,7 +4,6 @@ import User from './models/user'
 import ChatBox from './models/chatBox'
 import Message from './models/message'
 
-
 dotenv.config()
 mongoose.connect(process.env.MONGO_URL)
 const db = mongoose.connection
