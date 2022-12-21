@@ -1,25 +1,30 @@
-import AppTitle from "../components/Title";
-import LogIn from "../components/LogIn";
-import {useChat} from "./hooks/useChat";
+import { Input } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+import Title from '../Containers/Title'
+const SignIn = ({me, setMe, setSignedIn, dislayStatus}) => (
+    <>
+        <Title>
+            <h1>My Chat Room</h1>
+        </Title>
+        <Input.Search  
+        prefix={<UserOutlined />}
+        value = {me}
+        enterButton="Sign In"
+        onChange={(e) => setMe(e.target.value)}
+        placeholder="Enter your name"
+        size="large" style={{ width: 300, margin: 50}}
+        onSearch={ (name) => {
+            if (!name){
+                dislayStatus({
+                    type: "error",
+                    msg: "Missing user name"
+                })
+            }
+            else setSignedIn(true)
 
-const SignIn = () => {
-    const { me, setMe, setSignedIn, displayStatus } = useChat();
-    const handleLogin = (name) => {
-        if (!name)
-            displayStatus({
-                type: "error",
-                msg: "Missing user name",
-            });
-        else {
-            setSignedIn(true);
-        }
-    }
-    return (
-        <>
-            <AppTitle />
-            <LogIn me={me} setName={setMe} onLogin={handleLogin} />
-        </>
-    );
-}
+        }}
+        />
+    </>
+)
 
-export default SignIn;
+export default SignIn

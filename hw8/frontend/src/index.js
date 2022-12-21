@@ -1,36 +1,55 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import {ApolloClient, InMemoryCache, ApolloProvider,split, HttpLink} from '@apollo/client';
-import { getMainDefinition } from'@apollo/client/utilities';
-import { GraphQLWsLink } from'@apollo/client/link/subscriptions';
-import { createClient } from 'graphql-ws';
-import { ChatProvider } from"./containers/hooks/useChat"
-import App from "./containers/App";
-import reportWebVitals from "./reportWebVitals";
-const httpLink = new HttpLink({uri: 'http://localhost:4000/graphql',}); 
-const wsLink = new GraphQLWsLink(createClient({url: 'ws://localhost:4000/graphql',}));
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './Containers/App'
+import reportWebVitals from './reportWebVitals'
+import 'antd/dist/antd.css'
 
-const splitLink = split(
-({ query }) => {
-const definition = getMainDefinition(query);
-return (
-definition.kind === 'OperationDefinition' &&
-definition.operation === 'subscription'
-);
-},
-wsLink,
-httpLink,
-);
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  HttpLink,
+} from '@apollo/client'
+
+import { split } from 'apollo-link'
+import { WebSocketLink } from 'apollo-link-ws'
+import { getMainDefinition } from 'apollo-utilities'
+
+const httpLink = new HttpLink({
+  uri: 'http://localhost:4000/'
+})
+
+const wsLink = new WebSocketLink({
+  uri: 'ws://localhost:4000/',
+  options: { reconnect: true }
+})
+
+
+const link =  split(
+  ({ query }) => {
+    const definition = getMainDefinition(query)
+    return(
+      definition.kind === 'OperationDefinition' &&
+      definition.operation === 'subscription'
+    )
+  },
+  wsLink,
+  httpLink
+)
+
 const client = new ApolloClient({
-link: splitLink,
-cache: new InMemoryCache(),
-});
-const root =ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-<React.StrictMode>
-<ApolloProvider client={client}>
-<ChatProvider><App /></ChatProvider>
-</ApolloProvider>
-</React.StrictMode>
-);
-reportWebVitals();
+  link,
+  cache: new InMemoryCache().restore({})
+})
+
+ReactDOM.render(
+  <React.StrictMode>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+)
+
+reportWebVitals()
