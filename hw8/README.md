@@ -19,7 +19,7 @@ In backend/ `yarn install`
 
 Add your MongoURL to .env
 
-## 開啟
+## 開啟網頁
 
 ### `yarn server`
 
@@ -33,6 +33,9 @@ frontend 架在 localhost:3000
 
 https://stackoverflow.com/questions/4075287/node-express-eaddrinuse-address-already-in-use-kill-server
 
-sudo lsof -i :3000
+以 Port 3000 為例
+`sudo lsof -i :3000`
 
-kill -9 {PID}
+`kill -9 {PID}`
+
+有遇到任何問題可以聯絡：B07901104
