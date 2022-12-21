@@ -15,9 +15,11 @@ In frontend/ `yarn install`
 
 In backend/ `yarn install`
 
-## 開啟
+## Mongodb
 
-In the project directory, you can run:
+Add your MongoURL to .env
+
+## 開啟
 
 ### `yarn server`
 
@@ -27,7 +29,7 @@ backend 架在 localhost:5000
 
 frontend 架在 localhost:3000
 
-### 如果這兩個 port 有東西 所以網站開不起來 可以用下面的指令清空 address
+### 如果這兩個 port 有東西，所以網站開不起來，可以用下面的指令清空 address
 
 https://stackoverflow.com/questions/4075287/node-express-eaddrinuse-address-already-in-use-kill-server
 
