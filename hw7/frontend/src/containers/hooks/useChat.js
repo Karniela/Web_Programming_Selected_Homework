@@ -1,120 +1,115 @@
-import { useEffect, useState, createContext, useContext } from "react";
-import { message } from "antd";
+import { createContext, useContext, useState, useEffect } from "react";
+import {message} from "antd";
+
+const client = new WebSocket('ws://localhost:4000');
 
 const LOCALSTORAGE_KEY = "save-me";
 const savedMe = localStorage.getItem(LOCALSTORAGE_KEY);
 
-const ChatContext = createContext(
-{
+const ChatContext = createContext({
     status: {},
     me: "",
-    singedIn: false,
-    messages: [],
-    startChat: () => {},
+    signedIn: false,
+    message: [],
     sendMessage: () => {},
     clearMessages: () => {},
+    displayStatus: () => {},
+    startChat: () => {} 
 });
-    
-const client = new WebSocket("ws://localhost:4000");
 
 const ChatProvider = (props) => {
-    
     const [messages, setMessages] = useState([]);
     const [status, setStatus] = useState({});
-    const [singedIn, setSignedIn] = useState(false);
     const [me, setMe] = useState(savedMe || "");
-
-    const displayStatus = (s) => {
-        if (s.msg) {
-          const { type, msg } = s;
-          const content = {
-            content: msg, duration: 2 }
-          switch (type) {
-            case 'success':
-                message.success(content)
-                break;
-            case 'error':
-            default:
-                message.error(content)
-                break;
-    }}}
+    const [signedIn, setSignedIn] = useState(false);
+    client.onmessage = (byteString) => {
+         const { data } = byteString;
+         const [task, payload] = JSON.parse(data);
+         switch (task) {
+             case "chatinit": {
+                 setMessages(payload);
+                 break;}
+             case "output": {
+                 setMessages(() => [...messages, payload]); 
+                 break; }
+             case "status": {
+                 setStatus(payload); 
+                 break;}
+             case "cleared": {
+                 setMessages([]);
+                 break;
+             }
+             default: break;
+         }
+     }
+     const displayStatus = (s) => {
+         if (s.msg) {
+           const { type, msg } = s;
+           const content = {
+             content: msg, duration: 0.8 }
+           switch (type) {
+             case 'success':
+               message.success(content)
+               break
+             case 'error':
+             default:
+               message.error(content)
+               break
+       }}}
 
     const startChat = (name, to) => {
-        if (!name || !to) throw new Error("Name and To are required.");
-
+        if(!name || !to) throw new Error("name or to required");
+        
         sendData({
             type: "CHAT",
-            payload: { name, to },
-        });
-    };
+            payload: {name, to},
+        })
+        
 
+    }
     const sendData = async (data) => {
-        await client.send(JSON.stringify(data));
+        client.send(JSON.stringify(data));
     };
+    const sendMessage = (name, to, body) => {
+        if(!name || !to || !body) {
+            throw new Error("name to or body required");
+        }
+        sendData({
+            type: "MESSAGE",
+            payload: {name, to, body}
+        });
+    }
+    
     const clearMessages = () => {
         sendData(["clear"]);
     };
-    const sendMessage = (name, to, body) => {
-        if (!name || !to || !body) 
-            throw new Error("Name, To, and Body are required.");
-        sendData({
-            type: "MESSAGE",
-            payload: { name, to, body },
-        });
-    };
 
-    client.onmessage = (byteString) => {
-        const { data } = byteString;
-        const [task, payload] = JSON.parse(data);
-        console.log(task, payload);
-        switch (task) {
-            case "output": {
-                setMessages(payload);
-                break;
-            }
-            case "status": {
-                setStatus(payload);
-                break;
-            }
-            case "init": {
-                setMessages(payload);
-                break;
-            }
-            case "cleared": {
-                setMessages([]);
-                break;
-            }
-            default: break;
-        }
-    };
-    useEffect(() => {
-        if (singedIn) {
+     useEffect(() => {
+        if(signedIn) {
             localStorage.setItem(LOCALSTORAGE_KEY, me);
         }
-    }, [singedIn]);
+     }, [signedIn])
 
-    useEffect(() => {
-        displayStatus(status);
-    }, [status]);
-
-    return (
+     return (
         <ChatContext.Provider
-            value={{
-                status,
-                me,
-                singedIn,
-                messages,
-                startChat,
-                setMe,
-                setSignedIn,
-                sendMessage,
-                clearMessages,
-                displayStatus
+            value = {{
+                status, 
+                messages, 
+                me, 
+                signedIn, 
+                setMe, 
+                setSignedIn, 
+                sendMessage, 
+                clearMessages, 
+                displayStatus,
+                startChat
             }}
             {...props}
         />
-    );
-};
+     ); 
+}
 
 const useChat = () => useContext(ChatContext);
-export { ChatProvider, useChat };
+
+
+export {ChatProvider, useChat};

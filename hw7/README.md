@@ -1,3 +1,1 @@
-# hw7
-
-- 完成所有基本要求
+# Web Programming HW#7

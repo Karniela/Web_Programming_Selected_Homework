@@ -1,10 +1,10 @@
-import './App.css'
-import { useChat } from './hooks/useChat'
-import styled from 'styled-components'
+import {useEffect} from 'react'
+import {useChat} from './hooks/useChat'
+import styled from "styled-components"
 import ChatRoom from './ChatRoom'
 import SignIn from './SignIn'
 
-const Wrapper = styled.div`
+const Wrapper = styled.div `
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,13 +15,12 @@ const Wrapper = styled.div`
 `;
 
 const App = () => {
-  const {singedIn} = useChat()
-  
+  const {me, signedIn} = useChat();
   return (
     <Wrapper>
-      {singedIn ? <ChatRoom /> : <SignIn />}
+      {signedIn ? <ChatRoom /> : <SignIn />}
     </Wrapper>
-  );
-};
+  )
+}
 
 export default App
