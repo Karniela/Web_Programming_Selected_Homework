@@ -39,6 +39,7 @@ type Artist {
   name: String!
   imgURL: String
   description: String
+  analysis: String
 }
 
 type User {

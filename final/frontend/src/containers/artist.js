@@ -23,7 +23,7 @@ const Artist = () => {
     //here I use example result 
 
     const {data,loading} = useQuery(SINGLE_ARTIST_QUERY,{variables:{id:id}})
-    
+    console.log(data)
     return (
         loading? <p>Loading</p> : 
         <>
@@ -35,6 +35,7 @@ const Artist = () => {
                 </div>
                 <div class="col-md-6"> 
                 <p>{data?.artist.description}</p>
+                <img src={data?.artist.analysis} class="img-fluid hover-shadow" />
                 </div>
             </div>
             

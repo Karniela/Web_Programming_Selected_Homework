@@ -25,6 +25,7 @@ export const ARTISTS_QUERY = gql`
             name
             imgURL
             description
+            analysis
         }
     }
 `;
@@ -54,6 +55,7 @@ export const SINGLE_ARTIST_QUERY = gql`
             name
             imgURL
             description
+            analysis
         }
     }
 `;

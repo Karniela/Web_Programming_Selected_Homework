@@ -3,4 +3,9 @@ export const Artist = {
   name: (parent) => (parent.name),
   imgURL: (parent) => (parent.imgsrc),
   description: (parent) => (parent.description),
+  analysis:(parent) => {
+    console.log(parent.analysis);
+    return(parent.analysis)
+  }
+  
 };
