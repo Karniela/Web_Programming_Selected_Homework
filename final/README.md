@@ -2,6 +2,10 @@
 
 NTU Web Programming Final Project
 
+## Deployed Link
+
+https://wp1111-final-stable-version-production.up.railway.app/
+
 ## Local Test & Install
 
 ### Frontend
