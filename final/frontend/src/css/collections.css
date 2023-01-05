@@ -1,0 +1,17 @@
+.head-text{
+    position: relative;
+    color: black;
+}
+.text{
+    position: absolute;
+    top: 15%;
+    left: 58%;
+}
+.text > h1:hover{
+    text-decoration-line: underline;
+    cursor: pointer;
+}
+text > h3:hover{
+    text-decoration-line: underline;
+    cursor: pointer;
+}

@@ -1,0 +1,13 @@
+.head-text{
+    position: relative;
+    color: black;
+}
+.text{
+    position: absolute;
+    top: 18%;
+    left: 50%;
+}
+p:hover{
+    text-decoration-line: underline;
+    cursor: pointer;
+}

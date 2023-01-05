@@ -1,0 +1,59 @@
+type Query {
+  featured: [Artwork]!
+  newest: [Artwork]!
+  artworks(input: String!): [Artwork]!
+  artists(input: String!): [Artist]!
+  artwork(id: ID!): Artwork!
+  artist(id: ID!): Artist!
+  user(token: String!): User
+}
+
+type Mutation {
+  userSignup(input: SignUpInfo!): SignUpResult!
+  userLogin(email: String!, pwd: String!): LoginResult!
+}
+
+input SignUpInfo {
+  first_name: String!
+  last_name: String!
+  email: String!
+  pwd: String!
+}
+
+type Artwork {
+  id: ID!
+  title: String!
+  imgURL: String!
+  artist: String!
+  material: String!
+  dimension: String!
+  price: Float!
+  auction_date: String!
+  auction_house: String!
+  area: Float!
+  priceCentimeter: String!
+}
+
+type Artist {
+  id: ID!
+  name: String!
+  imgURL: String
+  description: String
+}
+
+type User {
+  id: ID!
+  first_name: String!
+  last_name: String!
+  email: String!
+}
+
+type LoginResult {
+  message: String!
+  token: String
+}
+
+type SignUpResult {
+  message: String!
+  token: String
+}

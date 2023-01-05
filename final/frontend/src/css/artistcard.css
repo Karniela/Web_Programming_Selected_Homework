@@ -1,0 +1,44 @@
+.images{
+    width:250px;
+    height:200px;
+    position:relative;
+}
+.container{
+    position:relative;
+    
+    width:250px;
+    height:325px;
+
+}
+.container:hover{
+    cursor: pointer;
+}
+
+.description{
+    position:relative;
+    
+    height:100px;
+    display:flex;
+}
+
+.right-column{
+    height:100%;
+    width:240px;
+    
+    display:flex;
+    flex-direction: column;
+    
+}
+.Title{
+    height:30px;
+    font-size:1.5em;
+    font-weight: bold;
+    padding-left:10px;
+
+}
+.Painter{
+    height:30px;
+    font-size:0.9em;
+    font-weight:300;
+    padding-left: 10px;
+}

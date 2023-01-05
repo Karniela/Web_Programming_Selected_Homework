@@ -1,0 +1,12 @@
+h1{
+    padding-left : 1%;
+}
+.art-container{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    row-gap:45px;
+    column-gap:80px;
+    padding-left:1%;
+    padding-right:1%;
+}
