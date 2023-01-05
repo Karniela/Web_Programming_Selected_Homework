@@ -55,7 +55,7 @@ const Description = () => {
           	        <td>{data?.artwork.dimension}</td>
                 </tr>
                 <tr>
-                    <th>Auction Hous</th>
+                    <th>Auction House</th>
           	        <td>{data?.artwork.auction_house}</td>
                 </tr>
                 <tr>
